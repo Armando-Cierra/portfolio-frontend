@@ -1,0 +1,25 @@
+---
+import type { Props } from './types'
+import './button.scss'
+
+const {
+  customClass,
+  variant = 'solid',
+  iconOnly = false,
+  ...rest
+}: Props = Astro.props
+---
+
+<button
+  class:list={[
+    'button',
+    {
+      [`button--${variant}`]: variant,
+      'button--iconOnly': iconOnly,
+      [`${customClass}`]: customClass
+    }
+  ]}
+  {...rest}
+>
+  <slot />
+</button>

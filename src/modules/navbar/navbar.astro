@@ -1,0 +1,164 @@
+---
+import Button from '@components/button/button.astro'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Logo from '@components/logo/Logo.astro'
+import Icon from '@components/icon/icon.astro'
+import './navbar.scss'
+
+const url = Astro.url
+const pathname = url.pathname.slice(4)
+const lang = getLangFromUrl(url)
+const t = useTranslations(lang)
+const colorModesTranslations = {
+  lightMode: t('navbar.lightMode'),
+  darkMode: t('navbar.darkMode')
+}
+---
+
+<nav class="navbar">
+  <div class="container--large">
+    <div class="leftSide">
+      <Logo />
+      <span>{t('navbar.jobTitle')}</span>
+    </div>
+    <div class="rightSide">
+      <a
+        class:list={[
+          'link',
+          { 'link--active': pathname === '', 'link--disabled': pathname === '' }
+        ]}
+        href={`/${lang}/`}>{t('navbar.home')}</a
+      >
+      <a
+        class:list={[
+          'link',
+          {
+            'link--active': pathname === 'about',
+            'link--disabled': pathname === 'about'
+          }
+        ]}
+        href={`/${lang}/about`}>{t('navbar.about')}</a
+      >
+      <a
+        class:list={[
+          'link',
+          {
+            'link--active': pathname === 'projects',
+            'link--disabled': pathname === 'projects'
+          }
+        ]}
+        href={`/${lang}/projects`}>{t('navbar.projects')}</a
+      >
+      <a class="link" href="#contact">{t('navbar.contact')}</a>
+      <div class="languages">
+        <a
+          class:list={[
+            'link',
+            {
+              'link--active': lang === 'en',
+              'link--disabled': lang === 'en'
+            }
+          ]}
+          href={`/en/${pathname}`}>EN</a
+        >
+        <div class="decorator"></div>
+        <a
+          class:list={[
+            'link',
+            {
+              'link--active': lang === 'es',
+              'link--disabled': lang === 'es'
+            }
+          ]}
+          href={`/es/${pathname}`}>ES</a
+        >
+      </div>
+      <div class="tooltipBox">
+        <Button
+          id="colorModeSelector"
+          customClass="colorModeSelector"
+          variant="ghost"
+          iconOnly
+        >
+          <Icon
+            name="moon"
+            id="sunIcon"
+            customClass="colorModeIcon icon--hidden"
+          />
+          <Icon
+            name="sun"
+            id="moonIcon"
+            customClass="colorModeIcon icon--hidden"
+          />
+        </Button>
+        <div class="tooltip tooltip--hidden" id="tooltip"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script define:vars={{ colorModesTranslations }}>
+  //Initial Tooltip value and icon
+  const initialTheme = localStorage.getItem('colorMode')
+  const colorModeBtn = document.getElementById('colorModeSelector')
+  const sunIcon = document.getElementById('sunIcon')
+  const moonIcon = document.getElementById('moonIcon')
+  const tooltip = document.getElementById('tooltip')
+
+  tooltip.innerHTML =
+    initialTheme === 'light'
+      ? colorModesTranslations.lightMode
+      : colorModesTranslations.darkMode
+
+  initialTheme === 'light'
+    ? sunIcon.classList.remove('icon--hidden')
+    : moonIcon.classList.remove('icon--hidden')
+
+  //Color mode toggler
+  colorModeBtn.addEventListener('click', toggleMenu)
+
+  function toggleMenu() {
+    const currentTheme = localStorage.getItem('colorMode')
+
+    if (currentTheme === 'light') {
+      localStorage.setItem('colorMode', 'dark')
+      document.body.setAttribute('data-colorMode', 'dark')
+      tooltip.innerHTML = colorModesTranslations.darkMode
+      moonIcon.classList.remove('icon--hidden')
+      sunIcon.classList.add('icon--hidden')
+    } else {
+      localStorage.setItem('colorMode', 'light')
+      document.body.setAttribute('data-colorMode', 'light')
+      tooltip.innerHTML = colorModesTranslations.lightMode
+      moonIcon.classList.add('icon--hidden')
+      sunIcon.classList.remove('icon--hidden')
+    }
+  }
+
+  //Tooltip Functionality
+  colorModeBtn.addEventListener('mouseenter', showTooltip)
+  colorModeBtn.addEventListener('mouseleave', hideTooltip)
+
+  function showTooltip() {
+    tooltip.classList.remove('tooltip--hidden')
+  }
+
+  function hideTooltip() {
+    tooltip.classList.add('tooltip--hidden')
+  }
+
+  //Removing Tooltip from mobile experience
+  if (
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  ) {
+    colorModeBtn.removeEventListener('mouseenter', showTooltip)
+    colorModeBtn.removeEventListener('mouseleave', hideTooltip)
+    tooltip.classList.add('tooltip--hidden')
+  }
+</script>

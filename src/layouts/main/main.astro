@@ -1,0 +1,25 @@
+---
+import Navbar from '@modules/navbar/navbar.astro'
+import '@styles/variables.scss'
+import './main.scss'
+
+const { pageTitle } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <script src="./getColorMode.ts"></script>
+    <Navbar />
+    <main>
+      <slot />
+      <!--Contact -->
+      <!--Footer -->
+    </main>
+  </body>
+</html>

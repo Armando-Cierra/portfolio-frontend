@@ -1,4 +1,12 @@
 {
+  "navbar.jobTitle": "Web Developer",
+  "navbar.home": "Home",
+  "navbar.about": "About",
+  "navbar.projects": "Projects",
+  "navbar.contact": "Contact",
+  "navbar.darkMode": "Dark Mode",
+  "navbar.lightMode": "Light Mode",
+
   "home.pageName": "Home",
   "about.pageName": "About",
   "projects.pageName": "Projects"

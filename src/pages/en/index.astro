@@ -1,6 +1,6 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../i18n/utils'
-import Layout from '@layouts/Layout.astro'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Layout from '@layouts/main/main.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)

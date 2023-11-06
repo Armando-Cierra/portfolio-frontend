@@ -1,8 +1,18 @@
 body {
-  --regular: 400;
-  --black: 900;
-  --base: 'Nunito Sans', sans-serif;
+  //Fonts
+  --default: 'Nunito Sans', sans-serif;
   --mono: 'Source Code Pro', monospace;
+
+  //Font Weights
+  --regular: 400;
+  --bold: 900;
+
+  //Font Sizes
+  --small: 12px;
+  --base: 16px;
+  --large: 20px;
+  --title_1: 24px;
+  --title_2: 36px;
 }
 
 //Color Modes
@@ -16,12 +26,29 @@ body[data-colorMode='dark'] {
 
   --text: #ffffff;
   --text_muted: #8693b5;
-  --text_inverted: #181b22;
-  --text_inverted_muted: #181b22;
   --text_danger: #e01d58;
   --text_warning: #f2a735;
   --text_success: #22e588;
 
   --border: #4f5b79;
   --border_active: #cad2e5;
+}
+
+//Color Modes
+body[data-colorMode='light'] {
+  --accent: #4c6aff;
+  --accent_active: #667fff;
+
+  --background_0: #e8e9ee;
+  --background_1: #ffffff;
+  --background_2: #c9ccdb;
+
+  --text: #292f40;
+  --text_muted: #6c7895;
+  --text_danger: #e01d58;
+  --text_warning: #f2a735;
+  --text_success: #22e588;
+
+  --border: #bfc7de;
+  --border_active: #a6afc4;
 }

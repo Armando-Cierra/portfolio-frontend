@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,900&family=Source+Code+Pro&display=swap');
 
+//General
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: var(--text);
-  font-family: var(--base);
+  font-family: var(--default);
   font-weight: var(--regular);
   &:focus {
     outline: none;
@@ -34,17 +34,47 @@
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+.container--large {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+//Layout
 html {
   width: 100%;
   height: 100%;
   body {
+    width: 100%;
     height: 100%;
+    overflow: hidden;
     background: var(--background_0);
     main {
       width: 100%;
-      height: calc(100vh - 90px);
+      height: calc(100vh - 70px);
       overflow: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 }

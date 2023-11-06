@@ -1,0 +1,59 @@
+.button {
+  display: flex;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: var(--large);
+  cursor: pointer;
+  transition: ease-in-out 0.15s;
+  &:hover,
+  &:focus-visible {
+    transform: scale(1.1);
+  }
+}
+
+.button--solid {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--text);
+  &:hover,
+  &:focus-visible {
+    box-shadow: 0 0 12px var(--accent);
+  }
+  &:active {
+    border-color: var(--accent_active);
+    background: var(--accent_active);
+  }
+}
+
+.button--outline {
+  background: rgba(77, 106, 255, 0);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  &:hover,
+  &:focus-visible {
+    background: var(--accent);
+    color: var(--text);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  &:active {
+    border-color: var(--accent_active);
+    background: var(--accent_active);
+  }
+}
+
+.button--ghost {
+  background: var(--background_1);
+  border: var(--background_1);
+  color: var(--text_muted);
+  &:hover,
+  &:focus-visible {
+    color: var(--text);
+    background: var(--background_0);
+    border-color: var(--background_0);
+  }
+}
+
+.button--iconOnly {
+  padding: 8px;
+}
