@@ -1,0 +1,11 @@
+{
+  "home": {
+    "pageName": "Inicio"
+  },
+  "about": {
+    "pageName": "Acerca De"
+  },
+  "projects": {
+    "pageName": "Proyectos"
+  }
+}
