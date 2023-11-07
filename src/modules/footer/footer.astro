@@ -1,0 +1,28 @@
+---
+import Icon from '@components/icon/icon.astro'
+import './footer.scss'
+---
+
+<footer class="footer">
+  <div class="socialNetworks">
+    <a href="https://www.facebook.com/ArmandoCierraDW" target="_blank">
+      <Icon name="facebook" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/armando-ernesto-cierra-moran-51093287/"
+      target="_blank"
+    >
+      <Icon name="linkedIn" />
+    </a>
+    <a href="https://github.com/Armando-Cierra" target="_blank">
+      <Icon name="github" />
+    </a>
+  </div>
+  <span id="copyright" class="copyright"></span>
+</footer>
+
+<script>
+  const copyright = document.getElementById('copyright') as HTMLSpanElement
+  const year = new Date().getFullYear()
+  copyright.textContent = `Copyright© ${year}`
+</script>

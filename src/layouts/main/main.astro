@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Navbar from '@modules/navbar/navbar.astro'
+import Footer from '@modules/footer/footer.astro'
 import '@styles/variables.scss'
 import './main.scss'
 
@@ -40,7 +41,7 @@ const { pageTitle } = Astro.props
     <main>
       <slot />
       <!--Contact -->
-      <!--Footer -->
+      <Footer />
     </main>
   </body>
 </html>
