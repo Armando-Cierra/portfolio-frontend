@@ -3,6 +3,7 @@
   height: 70px;
   background: var(--background_1);
   border-bottom: 1px solid var(--border);
+  transition: ease-in-out 0.15s;
   .container--large {
     height: inherit;
     padding: 1rem;
@@ -70,6 +71,7 @@
           height: 20px;
           width: 1px;
           background: var(--border);
+          transition: ease-in-out 0.15s;
         }
       }
       .tooltipBox {

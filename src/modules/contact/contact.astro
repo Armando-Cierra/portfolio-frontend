@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import PaperAirplaine from '@assets/paper-airplain.png'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import Form from './Form'
+import './contact.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const formFieldsTranslations = {
+  fullname: t('contact.fields.fullname'),
+  fullnamePlaceholder: t('contact.fields.fullname.placeholder'),
+  phoneNumber: t('contact.fields.phoneNumber'),
+  email: t('contact.fields.email'),
+  message: t('contact.fields.message'),
+  messagePlaceholder: t('contact.fields.message.placeholder'),
+  send: t('contact.send'),
+  cleanForm: t('contact.cleanForm'),
+  errorEmptyField: t('contact.error.emptyField'),
+  errorInvalidEmail: t('contact.error.invalidEmail'),
+  submitSuccess: t('contact.submit.success'),
+  submitError: t('contact.submit.error')
+}
+---
+
+<section class="contact">
+  <Title top={t('contact.titleTop')} bottom={t('contact.titleBottom')} />
+
+  <div class="container--large formBox">
+    <div class="image">
+      <Image alt="decorative paper airplane" src={PaperAirplaine} />
+    </div>
+    <Form translations={formFieldsTranslations} client:visible />
+  </div>
+</section>

@@ -1,16 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "/Users/armandocierra/Personal_Projects/Web/portfolio/frontend",
     "paths": {
       "@components/*": ["src/components/*"],
-      "@components_react/*": ["src/components.react/*"],
+      "@components.react": ["src/components.react"],
       "@modules/*": ["src/modules/*"],
       "@assets/*": ["src/assets/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@i18n/*": ["src/i18n/*"]
-    }
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

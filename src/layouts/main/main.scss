@@ -70,6 +70,12 @@ html {
     height: 100%;
     overflow: hidden;
     background: var(--background_0);
+    transition: ease-in-out 0.15s;
+    .pageTitle {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
     main {
       width: 100%;
       height: calc(100vh - 70px);

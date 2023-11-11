@@ -1,9 +1,11 @@
 .button {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 8px;
   padding: 8px 12px;
   border-radius: 8px;
-  font-size: var(--large);
+  font-size: var(--base);
   cursor: pointer;
   transition: ease-in-out 0.15s;
   &:hover,
@@ -15,10 +17,10 @@
 .button--solid {
   background: var(--accent);
   border: 1px solid var(--accent);
-  color: var(--text);
-  &:hover,
-  &:focus-visible {
-    box-shadow: 0 0 12px var(--accent);
+  color: white;
+  .icon {
+    color: white;
+    transition: ease-in-out 0.15s;
   }
   &:active {
     border-color: var(--accent_active);
@@ -30,11 +32,17 @@
   background: rgba(77, 106, 255, 0);
   border: 1px solid var(--accent);
   color: var(--accent);
+  .icon {
+    color: var(--accent);
+    transition: ease-in-out 0.15s;
+  }
   &:hover,
   &:focus-visible {
     background: var(--accent);
-    color: var(--text);
-    box-shadow: 0 0 12px var(--accent);
+    color: white;
+    .icon {
+      color: white;
+    }
   }
   &:active {
     border-color: var(--accent_active);
@@ -46,11 +54,40 @@
   background: var(--background_1);
   border: var(--background_1);
   color: var(--text_muted);
+  .icon {
+    color: var(--text_muted);
+    transition: ease-in-out 0.15s;
+  }
   &:hover,
   &:focus-visible {
-    color: var(--text);
+    color: white;
     background: var(--background_0);
     border-color: var(--background_0);
+    .icon {
+      color: white;
+    }
+  }
+}
+
+.button--subtle {
+  background: var(--background_1);
+  border: 1px solid var(--border);
+  color: var(--text_muted);
+  .icon {
+    color: var(--text_muted);
+    transition: ease-in-out 0.15s;
+  }
+  &:hover,
+  &:focus-visible {
+    background: var(--background_0);
+    color: white;
+    border-color: var(--border_interactive);
+    .icon {
+      color: white;
+    }
+  }
+  &:active {
+    background: var(--background_2);
   }
 }
 

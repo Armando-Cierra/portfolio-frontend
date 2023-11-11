@@ -9,7 +9,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'case' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -31,7 +31,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'doubleChevronDown' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -53,7 +53,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'facebook' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'github' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -95,7 +95,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'linkedIn' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -120,7 +120,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'moon' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -141,7 +141,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'sun' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -170,7 +170,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'user' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -192,7 +192,7 @@ const { customClass, name, ...rest } = Astro.props
   name === 'x' && (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class:list={['icon', {[customClass]: customClass}]}
+      class:list={['icon', { [customClass as string]: customClass }]}
       width="24"
       height="24"
       viewBox="0 0 24 24"

@@ -9,5 +9,20 @@
 
   "home.pageName": "Home",
   "about.pageName": "About",
-  "projects.pageName": "Projects"
+  "projects.pageName": "Projects",
+
+  "contact.titleTop": "Let's Talk!",
+  "contact.titleBottom": "Contact Me",
+  "contact.fields.fullname": "Full Name",
+  "contact.fields.fullname.placeholder": "Jhon Doe",
+  "contact.fields.phoneNumber": "Phone Number",
+  "contact.fields.email": "Email",
+  "contact.fields.message": "Message",
+  "contact.fields.message.placeholder": "Your ideas go here...",
+  "contact.send": "Send",
+  "contact.cleanForm": "Clean Form",
+  "contact.error.emptyField": "Please complete this field.",
+  "contact.error.invalidEmail": "Please introduce a valid email format.",
+  "contact.submit.success": "Message sent successfully 🚀",
+  "contact.submit.error": "Ups! There was an error with the server. Try again later or contact me on my social networks 😿"
 }
