@@ -1,0 +1,161 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Logo from '@components/logo/Logo.astro'
+import Button from '@components/button/button.astro'
+import Icon from '@components/icon/icon.astro'
+import './mobileMenu.scss'
+
+const url = Astro.url
+const pathname = url.pathname.slice(4)
+const lang = getLangFromUrl(url)
+const t = useTranslations(lang)
+---
+
+<header class="mobileHeader">
+  <Logo />
+</header>
+
+<navbar class="mobileMenu mobileMenu--close" id="mobileMenu">
+  <h2 class="menuTitle">{t('mobileMenu.Menu')}</h2>
+  <div class="mobileLinks">
+    <a
+      class:list={[
+        'mobileLink',
+        {
+          'mobileLink--active': pathname === '',
+          'mobileLink--disabled': pathname === ''
+        }
+      ]}
+      href={`/${lang}/`}>{t('navbar.home')}</a
+    >
+    <a
+      class:list={[
+        'mobileLink',
+        {
+          'mobileLink--active': pathname === 'about',
+          'mobileLink--disabled': pathname === 'about'
+        }
+      ]}
+      href={`/${lang}/about`}>{t('navbar.about')}</a
+    >
+    <a
+      class:list={[
+        'mobileLink',
+        {
+          'mobileLink--active': pathname === 'projects',
+          'mobileLink--disabled': pathname === 'projects'
+        }
+      ]}
+      href={`/${lang}/projects`}>{t('navbar.projects')}</a
+    >
+    <a class="mobileLink" href="#contact">{t('navbar.contact')}</a>
+  </div>
+  <div class="mobileSettings">
+    <div class="mobileLanguages">
+      <h3 class="mobileSubtitle">{t('mobileMenu.Languages')}</h3>
+      <div class="options">
+        <a
+          class:list={[
+            'mobileLink',
+            {
+              'mobileLink--active': lang === 'en',
+              'mobileLink--disabled': lang === 'en'
+            }
+          ]}
+          href={`/en/${pathname}`}>EN</a
+        >
+        <div class="decorator"></div>
+        <a
+          class:list={[
+            'mobileLink',
+            {
+              'mobileLink--active': lang === 'es',
+              'mobileLink--disabled': lang === 'es'
+            }
+          ]}
+          href={`/es/${pathname}`}>ES</a
+        >
+      </div>
+    </div>
+    <div class="mobileColorMode">
+      <h3 class="mobileSubtitle">{t('mobileMenu.ColorMode')}</h3>
+      <div class="options">
+        <button class="mobileColorModeOption" id="mobileDarkModeOption"
+          >Dark Mode <Icon name="moon" /></button
+        >
+        <button class="mobileColorModeOption" id="mobileLightModeOption"
+          >Light Mode <Icon name="sun" /></button
+        >
+      </div>
+    </div>
+  </div>
+</navbar>
+
+<button class="menuTrigger menuTrigger--close" id="menuTrigger">
+  <div id="menuTriggerIcon" class="menuTriggerIcon">
+    <div></div>
+  </div>
+</button>
+
+<script>
+  const menuTrigger = document.getElementById(
+    'menuTrigger'
+  ) as HTMLButtonElement
+  const mobileMenu = document.getElementById('mobileMenu') as HTMLDivElement
+  const mobileDarkModeOption = document.getElementById(
+    'mobileDarkModeOption'
+  ) as HTMLButtonElement
+  const mobileLightModeOption = document.getElementById(
+    'mobileLightModeOption'
+  ) as HTMLButtonElement
+
+  //Controls if the menu is open or not
+  let menuState: 'close' | 'open' = 'close'
+  menuTrigger.addEventListener('click', toggleMenu)
+
+  function toggleMenu() {
+    if (menuState === 'close') {
+      menuState = 'open'
+      mobileMenu.classList.add('mobileMenu--open')
+      mobileMenu.classList.remove('mobileMenu--close')
+      menuTrigger.classList.add('menuTrigger--open')
+      menuTrigger.classList.remove('menuTrigger--close')
+    } else {
+      menuState = 'close'
+      mobileMenu.classList.add('mobileMenu--close')
+      mobileMenu.classList.remove('mobileMenu--open')
+      menuTrigger.classList.add('menuTrigger--close')
+      menuTrigger.classList.remove('menuTrigger--open')
+    }
+  }
+
+  //Gets initial selected themme
+  const initialTheme = localStorage.getItem('colorMode')
+
+  if (initialTheme === 'light') {
+    mobileDarkModeOption.classList.remove('mobileColorModeOption--active')
+    mobileLightModeOption.classList.add('mobileColorModeOption--active')
+  } else {
+    mobileDarkModeOption.classList.add('mobileColorModeOption--active')
+    mobileLightModeOption.classList.remove('mobileColorModeOption--active')
+  }
+
+  mobileDarkModeOption.addEventListener('click', selectingTheme)
+  mobileLightModeOption.addEventListener('click', selectingTheme)
+
+  function selectingTheme(e: any) {
+    const selectedButton = e.target.id
+
+    if (selectedButton === 'mobileDarkModeOption') {
+      localStorage.setItem('colorMode', 'dark')
+      document.body.setAttribute('data-colorMode', 'dark')
+      mobileDarkModeOption.classList.add('mobileColorModeOption--active')
+      mobileLightModeOption.classList.remove('mobileColorModeOption--active')
+    } else {
+      localStorage.setItem('colorMode', 'light')
+      document.body.setAttribute('data-colorMode', 'light')
+      mobileDarkModeOption.classList.remove('mobileColorModeOption--active')
+      mobileLightModeOption.classList.add('mobileColorModeOption--active')
+    }
+  }
+</script>

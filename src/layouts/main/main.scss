@@ -45,6 +45,7 @@ p,
 span,
 a {
   color: var(--text);
+  font-size: var(--regular);
 }
 
 a {
@@ -79,9 +80,15 @@ html {
     }
     main {
       width: 100%;
-      height: calc(100vh - 70px);
+      height: calc(100% - 70px);
       overflow: hidden;
       overflow-y: auto;
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  html body main {
+    height: calc(100% - 50px);
   }
 }

@@ -111,8 +111,8 @@ const colorModesTranslations = {
       : colorModesTranslations.darkMode
 
   initialTheme === 'light'
-    ? sunIcon.classList.remove('icon--hidden')
-    : moonIcon.classList.remove('icon--hidden')
+    ? moonIcon.classList.remove('icon--hidden')
+    : sunIcon.classList.remove('icon--hidden')
 
   //Color mode toggler
   colorModeBtn.addEventListener('click', toggleMenu)
@@ -124,14 +124,14 @@ const colorModesTranslations = {
       localStorage.setItem('colorMode', 'dark')
       document.body.setAttribute('data-colorMode', 'dark')
       tooltip.innerHTML = colorModesTranslations.darkMode
-      moonIcon.classList.remove('icon--hidden')
-      sunIcon.classList.add('icon--hidden')
+      sunIcon.classList.remove('icon--hidden')
+      moonIcon.classList.add('icon--hidden')
     } else {
       localStorage.setItem('colorMode', 'light')
       document.body.setAttribute('data-colorMode', 'light')
       tooltip.innerHTML = colorModesTranslations.lightMode
-      moonIcon.classList.add('icon--hidden')
-      sunIcon.classList.remove('icon--hidden')
+      sunIcon.classList.add('icon--hidden')
+      moonIcon.classList.remove('icon--hidden')
     }
   }
 
@@ -144,21 +144,6 @@ const colorModesTranslations = {
   }
 
   function hideTooltip() {
-    tooltip.classList.add('tooltip--hidden')
-  }
-
-  //Removing Tooltip from mobile experience
-  if (
-    navigator.userAgent.match(/Android/i) ||
-    navigator.userAgent.match(/webOS/i) ||
-    navigator.userAgent.match(/iPhone/i) ||
-    navigator.userAgent.match(/iPad/i) ||
-    navigator.userAgent.match(/iPod/i) ||
-    navigator.userAgent.match(/BlackBerry/i) ||
-    navigator.userAgent.match(/Windows Phone/i)
-  ) {
-    colorModeBtn.removeEventListener('mouseenter', showTooltip)
-    colorModeBtn.removeEventListener('mouseleave', hideTooltip)
     tooltip.classList.add('tooltip--hidden')
   }
 </script>

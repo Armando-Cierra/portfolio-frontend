@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent } from 'react'
 import { toast } from 'react-toastify'
 import type { Props } from './types'
-import { positionAt } from 'node_modules/astro/dist/core/errors'
 
 export default function useForm({ translations }: Props) {
   const [formFields, setFormFields] = useState({
