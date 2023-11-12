@@ -7,7 +7,7 @@ export default function useForm({ translations }: Props) {
   const [formFields, setFormFields] = useState({
     fullname: '',
     phoneNumber: {
-      extension: '+1',
+      extention: '+1',
       number: ''
     },
     email: '',
@@ -43,12 +43,12 @@ export default function useForm({ translations }: Props) {
     const field = e.target.id
     const value = e.target.value
 
-    if (field === 'phoneMNumber') {
+    if (field === 'phoneNumber') {
       setFormFields((prevState) => ({
         ...prevState,
         phoneNumber: {
           ...prevState.phoneNumber,
-          number: value
+          number: value.replace(/[^0-9()\s-]/g, '')
         }
       }))
     } else {
@@ -102,7 +102,7 @@ export default function useForm({ translations }: Props) {
     setFormFields({
       fullname: '',
       phoneNumber: {
-        extension: '+1',
+        extention: '+1',
         number: ''
       },
       email: '',
@@ -137,6 +137,16 @@ export default function useForm({ translations }: Props) {
     })
   }
 
+  const selectingCountry = (extention: string) => () => {
+    setFormFields((prevState) => ({
+      ...prevState,
+      phoneNumber: {
+        ...prevState.phoneNumber,
+        extention
+      }
+    }))
+  }
+
   return {
     formFields,
     errors,
@@ -145,6 +155,7 @@ export default function useForm({ translations }: Props) {
     verifyFields,
     handleSubmit,
     cleanForm,
-    submitForm
+    submitForm,
+    selectingCountry
   }
 }

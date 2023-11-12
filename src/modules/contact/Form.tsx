@@ -1,7 +1,9 @@
 import classNames from 'classnames'
 import { ToastContainer } from 'react-toastify'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Button, Icon } from '@components.react'
 import useForm from './useForm'
+import CountryList from './CountryDials.json'
 import type { Props } from './types'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -14,7 +16,8 @@ export default function Form({ translations }: Props) {
     verifyFields,
     handleSubmit,
     cleanForm,
-    submitForm
+    submitForm,
+    selectingCountry
   } = useForm({ translations })
 
   return (
@@ -48,13 +51,40 @@ export default function Form({ translations }: Props) {
               <label htmlFor="phoneNumber">{translations.phoneNumber}</label>
             </div>
             <div className="phoneBox">
-              <Button variant="subtle">
-                +1
-                <Icon name="chevronDown" />
-              </Button>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild>
+                  <Button variant="subtle">
+                    {phoneNumber.extention}
+                    <Icon name="chevronDown" />
+                  </Button>
+                </DropdownMenu.Trigger>
+
+                <DropdownMenu.Portal>
+                  <DropdownMenu.Content
+                    asChild
+                    avoidCollisions
+                    align="start"
+                    side="bottom"
+                    sideOffset={8}
+                  >
+                    <div className="contactMenu">
+                      {CountryList.map((country) => (
+                        <DropdownMenu.Item
+                          className="menuItem"
+                          key={country.code}
+                          onClick={selectingCountry(country.dial_code)}
+                        >
+                          {country.name}
+                        </DropdownMenu.Item>
+                      ))}
+                    </div>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+              </DropdownMenu.Root>
               <input
                 type="text"
                 id="phoneNumber"
+                inputMode="numeric"
                 className={classNames('input input--phoneNumber', {
                   'input--error': errors.phoneNumber.error
                 })}

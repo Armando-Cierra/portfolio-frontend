@@ -7,6 +7,7 @@
   box-sizing: border-box;
   font-family: var(--default);
   font-weight: var(--regular);
+  -webkit-tap-highlight-color: transparent;
   &:focus {
     outline: none;
   }
