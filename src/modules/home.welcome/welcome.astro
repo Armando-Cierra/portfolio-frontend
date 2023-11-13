@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import Button from '@components/button/button.astro'
+import Icon from '@components/icon/icon.astro'
+import GameController from '@assets/control.png'
+import Coffee from '@assets/coffee.png'
+import Circle from '@assets/circle.png'
+import Diamond from '@assets/diamond.png'
+import './welcome.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="welcome">
+  <div class="welcomeContainer">
+    <Title
+      top={t('home.welcome.titleTop')}
+      bottom={t('home.welcome.titleBottom')}
+      size="large"
+    />
+    <div class="editorBox">
+      <Image
+        class="gameController"
+        alt="game controller decoration"
+        src={GameController}
+      />
+      <Image class="coffee" src={Coffee} alt="'coffee decoration" />
+      <Image class="circle" src={Circle} alt="'circle decoration" />
+      <Image class="diamond" src={Diamond} alt="'diamond decoration" />
+      <div class="editor">
+        <div class="controlNavbar">
+          <div class="controls">
+            <div class="control control--exit"></div>
+            <div class="control control--minimize"></div>
+            <div class="control control--expand"></div>
+          </div>
+          <span class="fileName">Hello World.js</span>
+        </div>
+        <div class="workarea">
+          <div class="row">
+            <span class="lineNumber lineNumber--1">1</span>
+            <p class="codeLine codeLine--1">
+              import <span class="blue">SayHello</span> from <span class="green"
+                >'sdk'</span
+              >
+            </p>
+          </div>
+          <div class="row">
+            <span class="lineNumber lineNumber--2">2</span>
+          </div>
+          <div class="row">
+            <span class="lineNumber lineNumber--3">3</span>
+            <p class="codeLine codeLine--3">
+              <span class="comentary">//Shows Welcome Message!</span>
+            </p>
+          </div>
+          <div class="row">
+            <span class="lineNumber lineNumber--4">4</span>
+            <p class="codeLine codeLine--4">
+              <span class="blue">SayHello()</span>
+            </p>
+          </div>
+          <div class="row">
+            <span class="lineNumber lineNumber--5">5</span>
+          </div>
+        </div>
+        <div class="terminal">
+          <div class="terminalNavbar">
+            <span>Terminal</span>
+            <Icon name="x" />
+          </div>
+          <p class="commandLine">
+            node <span class="green">HelloWorld.js</span>
+          </p>
+        </div>
+      </div>
+      <div class="btnBox">
+        <a href="https://github.com/Armando-Cierra" target="_blank"
+          ><Button variant="outline">
+            GitHub Profile <Icon name="github" />
+          </Button></a
+        >
+        <a href={`/${lang}/about`}
+          ><Button>More About Me <Icon name="user" /></Button></a
+        >
+      </div>
+      <Icon customClass="scrollDown" name="doubleChevronDown" />
+    </div>
+  </div>
+</section>

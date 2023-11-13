@@ -185,6 +185,12 @@ body {
   }
 }
 
+body[data-colorMode='light'] {
+  .contact .formBox .image {
+    background: var(--border);
+  }
+}
+
 @media (max-width: 1024px) {
   .contact {
     .formBox {

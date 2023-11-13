@@ -60,11 +60,11 @@
   }
   &:hover,
   &:focus-visible {
-    color: white;
+    color: var(--text);
     background: var(--background_0);
     border-color: var(--background_0);
     .icon {
-      color: white;
+      color: var(--text);
     }
   }
 }
@@ -80,10 +80,10 @@
   &:hover,
   &:focus-visible {
     background: var(--background_0);
-    color: white;
+    color: var(--text);
     border-color: var(--border_interactive);
     .icon {
-      color: white;
+      color: var(--text);
     }
   }
   &:active {

@@ -9,9 +9,14 @@
 
   "mobileMenu.Menu": "Menu",
   "mobileMenu.Languages": "Languages",
-  "mobileMenu.ColorMode": "Color Mode",
+  "mobileMenu.ColorMode": "Color Modes",
 
   "home.pageName": "Home",
+  "home.welcome.titleTop": "Hey! Welcome To My",
+  "home.welcome.titleBottom": "Portfolio",
+  "home.welcome.aboutMeBtn": "More About Me",
+  "home.welcome.githubBtn": "Github Profile",
+
   "about.pageName": "About",
   "projects.pageName": "Projects",
 
