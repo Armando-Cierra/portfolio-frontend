@@ -16,6 +16,10 @@
   "home.welcome.titleBottom": "Portfolio",
   "home.welcome.aboutMeBtn": "More About Me",
   "home.welcome.githubBtn": "Github Profile",
+  "home.latestProjects.titleTop": "Latest",
+  "home.latestProjects.titleBottom": "Projects",
+  "home.latestProjects.description": "Web Development, Graphic Design... Are you looking for something in specific? Check all of my projects in the following link 🚀",
+  "home.latestProjects.button": "See More Projects",
 
   "about.pageName": "About",
   "projects.pageName": "Projects",

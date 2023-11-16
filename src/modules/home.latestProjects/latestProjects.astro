@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import Button from '@components/button/button.astro'
+import Icon from '@components/icon/icon.astro'
+import { Carousel } from './carousel'
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
+import './latestProjects.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+//TODO: Connecting with CMS to bring latest projects
+---
+
+<section class="latestProjects">
+  <Title
+    top={t('home.latestProjects.titleTop')}
+    bottom={t('home.latestProjects.titleBottom')}
+  />
+  <div class="slideshow">
+    <div class="container">
+      <Carousel client:visible />
+    </div>
+  </div>
+  <div class="container descriptionContainer">
+    <p class="description">{t('home.latestProjects.description')}</p>
+    <Button>
+      {t('home.latestProjects.button')}
+      <Icon name="case" />
+    </Button>
+  </div>
+</section>

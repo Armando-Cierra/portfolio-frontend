@@ -10,7 +10,7 @@
   transition: ease-in-out 0.15s;
   &:hover,
   &:focus-visible {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
@@ -36,17 +36,8 @@
     color: var(--accent);
     transition: ease-in-out 0.15s;
   }
-  &:hover,
-  &:focus-visible {
-    background: var(--accent);
-    color: white;
-    .icon {
-      color: white;
-    }
-  }
   &:active {
-    border-color: var(--accent_active);
-    background: var(--accent_active);
+    background: var(--background_2);
   }
 }
 
