@@ -5,6 +5,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@components.react": ["src/components.react"],
+      "@components.react/*": ["src/components.react/*"],
       "@modules/*": ["src/modules/*"],
       "@assets/*": ["src/assets/*"],
       "@layouts/*": ["src/layouts/*"],

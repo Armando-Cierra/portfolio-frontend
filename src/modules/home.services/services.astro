@@ -1,0 +1,64 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import { ServicesSelector } from './servicesSelector'
+import type { Icons } from '@components.react/icon/types'
+import './services.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+//TODO: Replacing this t values for the actual ones brought from the API
+const listOfServices = [
+  {
+    id: 'webDevelopment',
+    title: t('home.services.webDevelopment') as string,
+    description: t('home.services.webDevelopmentDescription') as string,
+    icon: 'code' as Icons,
+    image:
+      'https://www.amazonate.com/hubfs/MATERIAL%202019/Fauna%20Amazonas/Aves/Guacamaya%20%20%283%29.jpg'
+  },
+  {
+    id: 'UXUIDesign',
+    title: t('home.services.UXUIDesign') as string,
+    description: t('home.services.UXUIDesignDescription') as string,
+    icon: 'figma' as Icons,
+    image:
+      'https://colombia.wcs.org/Portals/113/Foto-5--WCS---Julie-Larsen-Maher_5970_Blue-and-Yellow-Macaw-and-Scarlet-Macaw_ECU_11-00-08-%281%29.jpg'
+  },
+  {
+    id: 'customCMS',
+    title: t('home.services.customCMS') as string,
+    description: t('home.services.customCMSDescription') as string,
+    icon: 'switch' as Icons,
+    image:
+      'https://www.macawmountain.org/wp-content/uploads/2017/12/IMG_9755-1-768x527.jpg'
+  },
+  {
+    id: 'graphicDesign',
+    title: t('home.services.graphicDesign') as string,
+    description: t('home.services.graphicDesignDescription') as string,
+    icon: 'brush' as Icons,
+    image:
+      'https://elcomercio.pe/resizer/wyfm7MlZMnNvuT9ViK4DfXU_5Yk=/580x330/smart/filters:format(jpeg):quality(90)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/K2P3JDJKRZDT7DUJYSQY3GBJ5E.jpg'
+  },
+  {
+    id: 'consultancy',
+    title: t('home.services.consultancy') as string,
+    description: t('home.services.consultancyDescription') as string,
+    icon: 'coffee' as Icons,
+    image:
+      'https://runrun.es/wp-content/uploads/2023/02/macaw-320006_960_720.jpg'
+  }
+]
+---
+
+<section class="services">
+  <Title
+    top={t('home.services.titleTop')}
+    bottom={t('home.services.titleBottom')}
+  />
+  <div class="container">
+    <ServicesSelector client:visible listOfServices={listOfServices} />
+  </div>
+</section>

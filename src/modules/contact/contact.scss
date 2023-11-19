@@ -135,7 +135,8 @@
     cursor: pointer;
     color: var(--text_muted);
     transition: ease-in-out 0.15s;
-    &:hover {
+    &:hover,
+    &:focus-visible {
       background: var(--background_1);
       color: var(--text);
     }

@@ -1,4 +1,4 @@
-type Icon =
+export type Icons =
   | 'chevronDown'
   | 'code'
   | 'figma'
@@ -12,5 +12,5 @@ type Icon =
 
 export interface Props extends React.SVGProps<SVGSVGElement> {
   customClass?: string
-  name: Icon
+  name: Icons
 }
