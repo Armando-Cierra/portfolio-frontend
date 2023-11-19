@@ -1,11 +1,12 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Layout from '@layouts/main/main.astro'
+import Intro from '@modules/about.intro/intro.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
 <Layout pageTitle={t('about.pageName')}>
-  <h1>{t('about.pageName')}</h1>
+  <Intro />
 </Layout>

@@ -34,6 +34,11 @@
   "home.services.consultancyDescription": "Unlock the full potential of your online presence. Elevate your brand with expert web development solutions tailored to your unique goals. From sleek and responsive designs to seamless user experiences, empower your digital footprint and stand out in the digital landscape.",
 
   "about.pageName": "About",
+  "about.intro.titleTop": "Know More",
+  "about.intro.titleBottom": "About Me",
+  "about.intro.description": "I’m a passionate Web Developer who dedicates to create functional and unique user experiences. I love new technologies as much as new goals and challenges.",
+  "about.intro.cvButton": "Dowload My CV",
+
   "projects.pageName": "Projects",
 
   "contact.titleTop": "Let's Talk!",

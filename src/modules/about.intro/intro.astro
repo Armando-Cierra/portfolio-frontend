@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import Button from '@components/button/button.astro'
+import Icon from '@components/icon/icon.astro'
+import Astronaut from '@assets/astronaut.png'
+import './intro.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="intro">
+  <div class="container">
+    <div class="profile">
+      <Image src={Astronaut} alt="astronaut decoration image" />
+    </div>
+    <Title
+      top={t('about.intro.titleTop')}
+      bottom={t('about.intro.titleBottom')}
+      size="large"
+    />
+    <p class="description">{t('about.intro.description')}</p>
+    <a href="">
+      <Button>
+        {t('about.intro.cvButton')}
+        <Icon name="cv" />
+      </Button>
+    </a>
+  </div>
+</section>
