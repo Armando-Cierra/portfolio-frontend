@@ -98,52 +98,57 @@ const colorModesTranslations = {
 </nav>
 
 <script define:vars={{ colorModesTranslations }}>
-  //Initial Tooltip value and icon
-  const initialTheme = localStorage.getItem('colorMode')
-  const colorModeBtn = document.getElementById('colorModeSelector')
-  const sunIcon = document.getElementById('sunIcon')
-  const moonIcon = document.getElementById('moonIcon')
-  const tooltip = document.getElementById('tooltip')
+  function setThemeController() {
+    //Initial Tooltip value and icon
+    const initialTheme = localStorage.getItem('colorMode')
+    const colorModeBtn = document.getElementById('colorModeSelector')
+    const sunIcon = document.getElementById('sunIcon')
+    const moonIcon = document.getElementById('moonIcon')
+    const tooltip = document.getElementById('tooltip')
 
-  tooltip.innerHTML =
+    tooltip.innerHTML =
+      initialTheme === 'light'
+        ? colorModesTranslations.lightMode
+        : colorModesTranslations.darkMode
+
     initialTheme === 'light'
-      ? colorModesTranslations.lightMode
-      : colorModesTranslations.darkMode
+      ? moonIcon.classList.remove('icon--hidden')
+      : sunIcon.classList.remove('icon--hidden')
 
-  initialTheme === 'light'
-    ? moonIcon.classList.remove('icon--hidden')
-    : sunIcon.classList.remove('icon--hidden')
+    //Color mode toggler
+    colorModeBtn.addEventListener('click', toggleMenu)
 
-  //Color mode toggler
-  colorModeBtn.addEventListener('click', toggleMenu)
+    function toggleMenu() {
+      const currentTheme = localStorage.getItem('colorMode')
 
-  function toggleMenu() {
-    const currentTheme = localStorage.getItem('colorMode')
+      if (currentTheme === 'light') {
+        localStorage.setItem('colorMode', 'dark')
+        document.body.setAttribute('data-colorMode', 'dark')
+        tooltip.innerHTML = colorModesTranslations.darkMode
+        sunIcon.classList.remove('icon--hidden')
+        moonIcon.classList.add('icon--hidden')
+      } else {
+        localStorage.setItem('colorMode', 'light')
+        document.body.setAttribute('data-colorMode', 'light')
+        tooltip.innerHTML = colorModesTranslations.lightMode
+        sunIcon.classList.add('icon--hidden')
+        moonIcon.classList.remove('icon--hidden')
+      }
+    }
 
-    if (currentTheme === 'light') {
-      localStorage.setItem('colorMode', 'dark')
-      document.body.setAttribute('data-colorMode', 'dark')
-      tooltip.innerHTML = colorModesTranslations.darkMode
-      sunIcon.classList.remove('icon--hidden')
-      moonIcon.classList.add('icon--hidden')
-    } else {
-      localStorage.setItem('colorMode', 'light')
-      document.body.setAttribute('data-colorMode', 'light')
-      tooltip.innerHTML = colorModesTranslations.lightMode
-      sunIcon.classList.add('icon--hidden')
-      moonIcon.classList.remove('icon--hidden')
+    //Tooltip Functionality
+    colorModeBtn.addEventListener('mouseenter', showTooltip)
+    colorModeBtn.addEventListener('mouseleave', hideTooltip)
+
+    function showTooltip() {
+      tooltip.classList.remove('tooltip--hidden')
+    }
+
+    function hideTooltip() {
+      tooltip.classList.add('tooltip--hidden')
     }
   }
 
-  //Tooltip Functionality
-  colorModeBtn.addEventListener('mouseenter', showTooltip)
-  colorModeBtn.addEventListener('mouseleave', hideTooltip)
-
-  function showTooltip() {
-    tooltip.classList.remove('tooltip--hidden')
-  }
-
-  function hideTooltip() {
-    tooltip.classList.add('tooltip--hidden')
-  }
+  setThemeController()
+  document.addEventListener('astro:after-swap', setThemeController)
 </script>

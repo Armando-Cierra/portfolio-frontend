@@ -98,64 +98,69 @@ const t = useTranslations(lang)
 </button>
 
 <script>
-  const menuTrigger = document.getElementById(
-    'menuTrigger'
-  ) as HTMLButtonElement
-  const mobileMenu = document.getElementById('mobileMenu') as HTMLDivElement
-  const mobileDarkModeOption = document.getElementById(
-    'mobileDarkModeOption'
-  ) as HTMLButtonElement
-  const mobileLightModeOption = document.getElementById(
-    'mobileLightModeOption'
-  ) as HTMLButtonElement
+  function settingMobileMenu() {
+    const menuTrigger = document.getElementById(
+      'menuTrigger'
+    ) as HTMLButtonElement
+    const mobileMenu = document.getElementById('mobileMenu') as HTMLDivElement
+    const mobileDarkModeOption = document.getElementById(
+      'mobileDarkModeOption'
+    ) as HTMLButtonElement
+    const mobileLightModeOption = document.getElementById(
+      'mobileLightModeOption'
+    ) as HTMLButtonElement
 
-  //Controls if the menu is open or not
-  let menuState: 'close' | 'open' = 'close'
-  menuTrigger.addEventListener('click', toggleMenu)
+    //Controls if the menu is open or not
+    let menuState: 'close' | 'open' = 'close'
+    menuTrigger.addEventListener('click', toggleMenu)
 
-  function toggleMenu() {
-    if (menuState === 'close') {
-      menuState = 'open'
-      mobileMenu.classList.add('mobileMenu--open')
-      mobileMenu.classList.remove('mobileMenu--close')
-      menuTrigger.classList.add('menuTrigger--open')
-      menuTrigger.classList.remove('menuTrigger--close')
-    } else {
-      menuState = 'close'
-      mobileMenu.classList.add('mobileMenu--close')
-      mobileMenu.classList.remove('mobileMenu--open')
-      menuTrigger.classList.add('menuTrigger--close')
-      menuTrigger.classList.remove('menuTrigger--open')
+    function toggleMenu() {
+      if (menuState === 'close') {
+        menuState = 'open'
+        mobileMenu.classList.add('mobileMenu--open')
+        mobileMenu.classList.remove('mobileMenu--close')
+        menuTrigger.classList.add('menuTrigger--open')
+        menuTrigger.classList.remove('menuTrigger--close')
+      } else {
+        menuState = 'close'
+        mobileMenu.classList.add('mobileMenu--close')
+        mobileMenu.classList.remove('mobileMenu--open')
+        menuTrigger.classList.add('menuTrigger--close')
+        menuTrigger.classList.remove('menuTrigger--open')
+      }
     }
-  }
 
-  //Gets initial selected themme
-  const initialTheme = localStorage.getItem('colorMode')
+    //Gets initial selected themme
+    const initialTheme = localStorage.getItem('colorMode')
 
-  if (initialTheme === 'light') {
-    mobileDarkModeOption.classList.remove('mobileColorModeOption--active')
-    mobileLightModeOption.classList.add('mobileColorModeOption--active')
-  } else {
-    mobileDarkModeOption.classList.add('mobileColorModeOption--active')
-    mobileLightModeOption.classList.remove('mobileColorModeOption--active')
-  }
-
-  mobileDarkModeOption.addEventListener('click', selectingTheme)
-  mobileLightModeOption.addEventListener('click', selectingTheme)
-
-  function selectingTheme(e: any) {
-    const selectedButton = e.target.id
-
-    if (selectedButton === 'mobileDarkModeOption') {
-      localStorage.setItem('colorMode', 'dark')
-      document.body.setAttribute('data-colorMode', 'dark')
-      mobileDarkModeOption.classList.add('mobileColorModeOption--active')
-      mobileLightModeOption.classList.remove('mobileColorModeOption--active')
-    } else {
-      localStorage.setItem('colorMode', 'light')
-      document.body.setAttribute('data-colorMode', 'light')
+    if (initialTheme === 'light') {
       mobileDarkModeOption.classList.remove('mobileColorModeOption--active')
       mobileLightModeOption.classList.add('mobileColorModeOption--active')
+    } else {
+      mobileDarkModeOption.classList.add('mobileColorModeOption--active')
+      mobileLightModeOption.classList.remove('mobileColorModeOption--active')
+    }
+
+    mobileDarkModeOption.addEventListener('click', selectingTheme)
+    mobileLightModeOption.addEventListener('click', selectingTheme)
+
+    function selectingTheme(e: any) {
+      const selectedButton = e.target.id
+
+      if (selectedButton === 'mobileDarkModeOption') {
+        localStorage.setItem('colorMode', 'dark')
+        document.body.setAttribute('data-colorMode', 'dark')
+        mobileDarkModeOption.classList.add('mobileColorModeOption--active')
+        mobileLightModeOption.classList.remove('mobileColorModeOption--active')
+      } else {
+        localStorage.setItem('colorMode', 'light')
+        document.body.setAttribute('data-colorMode', 'light')
+        mobileDarkModeOption.classList.remove('mobileColorModeOption--active')
+        mobileLightModeOption.classList.add('mobileColorModeOption--active')
+      }
     }
   }
+  settingMobileMenu()
+
+  document.addEventListener('astro:after-swap', settingMobileMenu)
 </script>

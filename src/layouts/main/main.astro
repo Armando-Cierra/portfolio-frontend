@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import { ViewTransitions } from 'astro:transitions'
 import Navbar from '@modules/navbar/navbar.astro'
 import MobileMenu from '@modules/mobileMenu/mobileMenu.astro'
 import Contact from '@modules/contact/contact.astro'
@@ -17,31 +18,37 @@ const { pageTitle } = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
+    <ViewTransitions />
   </head>
 
   <body>
     <h1 class="pageTitle">{pageTitle}</h1>
     <script is:inline>
-      const colorMode = localStorage.getItem('colorMode')
+      function loadThemes() {
+        const colorMode = localStorage.getItem('colorMode')
 
-      const getSystemColorMode = () => {
-        const systemDarkTheme = window.matchMedia(
-          '(prefers-color-scheme: dark)'
-        )
-        if (systemDarkTheme.matches) return 'dark'
-        return 'light'
-      }
+        const getSystemColorMode = () => {
+          const systemDarkTheme = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          )
+          if (systemDarkTheme.matches) return 'dark'
+          return 'light'
+        }
 
-      if (colorMode === 'dark' || colorMode === 'light') {
-        document.body.setAttribute('data-colorMode', colorMode)
-      } else {
-        const systemColorMode = getSystemColorMode()
-        localStorage.setItem('colorMode', systemColorMode)
-        document.body.setAttribute('data-colorMode', systemColorMode)
+        if (colorMode === 'dark' || colorMode === 'light') {
+          document.body.setAttribute('data-colorMode', colorMode)
+        } else {
+          const systemColorMode = getSystemColorMode()
+          localStorage.setItem('colorMode', systemColorMode)
+          document.body.setAttribute('data-colorMode', systemColorMode)
+        }
       }
+      loadThemes()
+
+      document.addEventListener('astro:after-swap', loadThemes)
     </script>
-    <Navbar />
-    <MobileMenu />
+    <Navbar transition:persist />
+    <MobileMenu transition:persist />
     <main>
       <slot />
       <Contact />
