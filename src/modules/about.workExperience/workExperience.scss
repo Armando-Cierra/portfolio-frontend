@@ -1,0 +1,114 @@
+.workExperience {
+  padding: 30px 0;
+  .container {
+    padding: 0 1rem;
+    .title {
+      margin-bottom: 30px;
+    }
+    .content {
+      display: flex;
+      gap: 40px;
+      .decoration {
+        position: relative;
+        width: 320px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .backgroundDecoration {
+          width: 100%;
+          height: auto;
+        }
+        .suitCase {
+          position: absolute;
+          animation: suitCaseSwing 3s ease-in-out infinite;
+        }
+      }
+      .worksList {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        .work {
+          padding: 1.5rem;
+          background: var(--background_1);
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          display: flex;
+          gap: 1rem;
+          .companyLogo {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+          }
+          .workContent {
+            .heading {
+              .workTitle {
+                font-size: var(--large);
+                font-weight: var(--bold);
+              }
+              .workType {
+                font-size: var(--small);
+                color: var(--text_muted);
+              }
+            }
+          }
+          .timePeriod {
+            color: var(--text_muted);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+          }
+          .roles {
+            .roleTitle {
+              font-weight: var(--bold);
+            }
+            ul {
+              padding-left: 2rem;
+              li {
+                font-family: var(--mono);
+                color: var(--text_muted);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//Media queries
+.workExperience .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .title h2 {
+    text-align: center;
+  }
+  .content {
+    flex-direction: column-reverse;
+    align-items: center;
+    .decoration {
+      width: 200px;
+      .suitCase {
+        width: 75%;
+        height: auto;
+      }
+    }
+  }
+}
+
+//Animations
+@keyframes suitCaseSwing {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}

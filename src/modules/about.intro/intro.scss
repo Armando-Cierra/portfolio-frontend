@@ -26,7 +26,9 @@
         background: var(--accent);
         border-radius: 24px;
         z-index: -1;
-        animation: swing 3s ease-in-out infinite;
+        transform: rotate(15deg);
+        box-shadow: 0 0 12px var(--accent);
+        animation: astronautSwing 3s ease-in-out infinite;
       }
       img {
         width: 200px;
@@ -46,6 +48,7 @@
   }
 }
 
+//Theme customization
 body[data-colorMode='light'] {
   .intro {
     .container {
@@ -56,6 +59,7 @@ body[data-colorMode='light'] {
   }
 }
 
+//Media Queries
 @media (max-width: 768px) {
   .intro {
     .container {
@@ -70,7 +74,8 @@ body[data-colorMode='light'] {
   }
 }
 
-@keyframes swing {
+//Animations
+@keyframes astronautSwing {
   0% {
     transform: rotate(15deg);
   }

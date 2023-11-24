@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import { Image } from 'astro:assets'
+import Title from '@components/title/title.astro'
+import { WorksList } from './worksList'
+import BackgorundDecoration from '@assets/background-decoration.png'
+import SuitCase from '@assets/case.png'
+import './workExperience.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+//TODO: Connect with API
+const worksList = [
+  {
+    name: 'Example 1',
+    image:
+      'https://yt3.googleusercontent.com/ytc/APkrFKZTZcwBZtL2KvYmF3sLLp6nu6XnPxS33PC1zieo3Q=s900-c-k-c0x00ffffff-no-rj',
+    jobType: 'full-time',
+    startDate: 'Jan 2021',
+    endDate: 'Now',
+    roles: [
+      'Design System Lead Developer (Jan 2023 - Now)',
+      'React Frontend Developer (Jan 2021 - Dec 2022)'
+    ]
+  },
+  {
+    name: 'Example 2',
+    image:
+      'https://yt3.googleusercontent.com/ytc/APkrFKZTZcwBZtL2KvYmF3sLLp6nu6XnPxS33PC1zieo3Q=s900-c-k-c0x00ffffff-no-rj',
+    jobType: 'half-time',
+    startDate: 'Jan 2019',
+    endDate: 'Dec 2019',
+    roles: []
+  }
+]
+---
+
+<section class="workExperience">
+  <div class="container">
+    <Title
+      align="left"
+      top={t('about.workExperience.titleTop')}
+      bottom={t('about.workExperience.titleBottom')}
+    />
+    <div class="content">
+      <WorksList worksList={worksList} />
+      <div class="decoration">
+        <Image
+          class="backgroundDecoration"
+          src={BackgorundDecoration}
+          alt="geometric figures decoration"
+        />
+        <Image class="suitCase" src={SuitCase} alt="suit case illustration" />
+      </div>
+    </div>
+  </div>
+</section>

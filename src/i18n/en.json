@@ -38,6 +38,8 @@
   "about.intro.titleBottom": "About Me",
   "about.intro.description": "I’m a passionate Web Developer who dedicates to create functional and unique user experiences. I love new technologies as much as new goals and challenges.",
   "about.intro.cvButton": "Dowload My CV",
+  "about.workExperience.titleTop": "Work",
+  "about.workExperience.titleBottom": "Experience",
 
   "projects.pageName": "Projects",
 
