@@ -40,6 +40,10 @@
   "about.intro.cvButton": "Dowload My CV",
   "about.workExperience.titleTop": "Work",
   "about.workExperience.titleBottom": "Experience",
+  "about.skills.web.titleTop": "Web",
+  "about.skills.web.titleBottom": "Skills",
+  "about.skills.design.titleTop": "Design",
+  "about.skills.design.titleBottom": "Apps",
 
   "projects.pageName": "Projects",
 

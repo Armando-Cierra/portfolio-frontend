@@ -22,7 +22,12 @@ import './footer.scss'
 </footer>
 
 <script>
-  const copyright = document.getElementById('copyright') as HTMLSpanElement
-  const year = new Date().getFullYear()
-  copyright.textContent = `Copyright© ${year}`
+  function getCopyright() {
+    const copyright = document.getElementById('copyright') as HTMLSpanElement
+    const year = new Date().getFullYear()
+    copyright.textContent = `Copyright© ${year}`
+  }
+
+  getCopyright()
+  document.addEventListener('astro:after-swap', getCopyright)
 </script>

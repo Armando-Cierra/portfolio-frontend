@@ -1,0 +1,66 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Title from '@components/title/title.astro'
+import { SkillsList } from './skillsList'
+import type { Skill } from './types'
+import './skills.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+//TODO; Connecting to the API
+const webSkills: Skill[] = [
+  {
+    name: 'Astro JS',
+    percentage: '90',
+    color: '#e34f26',
+    icon: 'astro'
+  },
+  {
+    name: 'Strapi',
+    percentage: '90',
+    color: '#e34f26',
+    icon: 'strapi'
+  }
+]
+
+const designApps: Skill[] = [
+  {
+    name: 'Affinity',
+    percentage: '65',
+    color: '#4898FA',
+    icon: 'affinityPhoto'
+  },
+  {
+    name: 'Affinity Designer',
+    percentage: '65',
+    color: '#4898FA',
+    icon: 'affinityDesigner'
+  },
+  {
+    name: 'Sketch',
+    percentage: '65',
+    color: '#4898FA',
+    icon: 'sketch'
+  }
+]
+---
+
+<section class="skills">
+  <div class="container">
+    <Title
+      top={t('about.skills.web.titleTop')}
+      bottom={t('about.skills.web.titleBottom')}
+      align="left"
+    />
+    <SkillsList client:visible list={webSkills} />
+  </div>
+  <div class="container">
+    <Title
+      top={t('about.skills.design.titleTop')}
+      bottom={t('about.skills.design.titleBottom')}
+      align="left"
+    />
+    <SkillsList client:visible list={designApps} />
+  </div>
+</section>

@@ -1,5 +1,6 @@
 .workExperience {
   padding: 30px 0;
+  background: var(--background_1);
   .container {
     padding: 0 1rem;
     .title {
@@ -7,6 +8,7 @@
     }
     .content {
       display: flex;
+      align-items: center;
       gap: 40px;
       .decoration {
         position: relative;
@@ -31,7 +33,7 @@
         gap: 0.5rem;
         .work {
           padding: 1.5rem;
-          background: var(--background_1);
+          background: var(--background_2);
           border: 1px solid var(--border);
           border-radius: 8px;
           display: flex;
@@ -78,23 +80,32 @@
   }
 }
 
-//Media queries
-.workExperience .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .title h2 {
-    text-align: center;
+//LIght theme customization
+body[data-colorMode='light'] {
+  .workExperience .container .content .worksList .work {
+    background: var(--background_0);
   }
-  .content {
-    flex-direction: column-reverse;
+}
+
+//Media queries
+@media (max-width: 1024px) {
+  .workExperience .container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    .decoration {
-      width: 200px;
-      .suitCase {
-        width: 75%;
-        height: auto;
+    justify-content: center;
+    .title h2 {
+      text-align: center;
+    }
+    .content {
+      flex-direction: column-reverse;
+      align-items: center;
+      .decoration {
+        width: 200px;
+        .suitCase {
+          width: 75%;
+          height: auto;
+        }
       }
     }
   }
