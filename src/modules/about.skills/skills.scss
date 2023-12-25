@@ -136,14 +136,24 @@
 
 body[data-colorMode='light'] {
   .skills .container .list .item {
+    background: var(--background_1);
     &:hover {
       .box .icon {
         opacity: 1;
       }
     }
-    background: var(--text_muted);
     .box .icon {
+      color: var(--text);
       opacity: 0.8;
+    }
+    .box .waves{
+      opacity: .85;
+      .filler{
+        &::after{
+          mix-blend-mode: soft-light;
+          background: linear-gradient(to top, #d2d2d2, rgba(255, 255, 255, 0));
+        }
+      }
     }
   }
 }

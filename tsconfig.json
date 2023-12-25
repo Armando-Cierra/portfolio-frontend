@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/armandocierra/Personal_Projects/Web/portfolio/frontend",
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],
       "@components.react": ["src/components.react"],
