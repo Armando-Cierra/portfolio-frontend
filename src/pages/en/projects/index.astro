@@ -1,11 +1,65 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Layout from '@layouts/main/main.astro'
+import Title from '@components/title/title.astro'
+import Content from '@modules/projects.content/Content'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
+
+//TODO: Connect with API
+const translations = {
+  search: t('projects.search'),
+  placeholder: t('projects.placeholder'),
+  categories: t('projects.categories'),
+  web: t('projects.web'),
+  design: t('projects.design'),
+  more: t('projects.more')
+}
+
+const categories = {
+  web: ['html', 'css', 'javascript', 'react'],
+  design: ['ux/ui', 'branding', 'logotypes', 'illustrations']
+}
+
+const projects = [
+  {
+    name: 'project 1',
+    cover:
+      'https://lafrikileria.com/blog/wp-content/uploads/2023/02/lista-mejores-superheroes-marvel.jpg',
+    shortDescription:
+      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
+    description:
+      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface. Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
+    category: ['web'],
+    tags: ['html', 'css', 'javascript']
+  },
+  {
+    name: 'project 2',
+    cover:
+      'https://cdn.mobygames.com/covers/8437192-the-legend-of-zelda-breath-of-the-wild-nintendo-switch-front-cov.jpg',
+    shortDescription:
+      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
+    description:
+      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface. Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
+    category: ['design'],
+    tags: ['ux/ui', 'branding']
+  }
+]
 ---
 
 <Layout pageTitle={t('projects.pageName')}>
-  <h1>{t('projects.pageName')}</h1>
+  <section class="projects">
+    <Title
+      size="large"
+      top={t('projects.titleTop')}
+      bottom={t('about.intro.titleBottom')}
+    />
+    <Content
+      client:only
+      translations={translations}
+      categories={categories}
+      projects={projects}
+    />
+  </section>
 </Layout>

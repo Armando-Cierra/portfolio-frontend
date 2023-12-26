@@ -18,7 +18,7 @@
   "home.welcome.githubBtn": "Github Profile",
   "home.latestProjects.titleTop": "Latest",
   "home.latestProjects.titleBottom": "Projects",
-  "home.latestProjects.description": "Seeking something in specific? Dive into my portfolio showcasing a diverse array of projects. Click the link below to explore a galaxy of creative endeavors! 🚀",
+  "home.latestProjects.description": "Looking for something in specific? Dive into my portfolio showcasing a diverse array of projects 🚀",
   "home.latestProjects.button": "See More Projects",
   "home.services.titleTop": "List Of",
   "home.services.titleBottom": "Services",
@@ -46,6 +46,14 @@
   "about.skills.design.titleBottom": "Apps",
 
   "projects.pageName": "Projects",
+  "projects.titleTop": "List Of",
+  "projects.titleBottom": "Projects",
+  "projects.search": "Search",
+  "projects.placeholder": "Name of the project...",
+  "projects.categories": "Categories",
+  "projects.web": "Web",
+  "projects.design": "Design",
+  "projects.more": "More",
 
   "contact.titleTop": "Let's Talk!",
   "contact.titleBottom": "Contact Me",

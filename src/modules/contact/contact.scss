@@ -193,12 +193,20 @@ body[data-colorMode='light'] {
   }
 }
 
+@media (max-width: 1455px) {
+  .contact .formBox {
+    .image,
+    form {
+      border-radius: 0;
+    }
+  }
+}
+
 @media (max-width: 1024px) {
   .contact {
     .formBox {
       flex-direction: column;
       .image {
-        border-radius: 0;
         width: 100%;
         padding: 2rem;
         img {
@@ -207,7 +215,6 @@ body[data-colorMode='light'] {
         }
       }
       form {
-        border-radius: 0;
         .btnsBox {
           justify-content: center;
         }

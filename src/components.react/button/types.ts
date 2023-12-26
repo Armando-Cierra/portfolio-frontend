@@ -9,4 +9,5 @@ export interface Props
   variant?: 'solid' | 'outline' | 'ghost' | 'subtle'
   iconOnly?: boolean
   children?: ReactNode
+  isSelected?: boolean
 }

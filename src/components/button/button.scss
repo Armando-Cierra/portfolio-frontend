@@ -10,7 +10,7 @@
   transition: ease-in-out 0.15s;
   &:hover,
   &:focus-visible {
-    transform: scale(1.07);
+    transform: scale(1.04);
   }
 }
 
@@ -79,6 +79,14 @@
   }
   &:active {
     background: var(--background_2);
+  }
+  &.button-isSelected {
+    background: var(--background_0);
+    color: var(--text);
+    border-color: var(--border_interactive);
+    .icon {
+      color: var(--text);
+    }
   }
 }
 
