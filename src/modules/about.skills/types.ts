@@ -1,12 +1,17 @@
-import type { Icons } from '@components.react/icon/types'
-
 export type Skill = {
-  name: string
-  percentage: string
-  color: string
-  icon: Icons
+  attributes: {
+    name: string
+    percentage: number
+    icon: string
+    category: string
+    color: string
+  }
 }
 
 export interface Props {
+  skills: unknown
+}
+
+export interface SkillsListProps {
   list: Skill[]
 }

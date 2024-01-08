@@ -1,17 +1,26 @@
 import type { Icons } from '@components.react/icon/types'
 
-type Service = {
-  id: string
-  title: string
-  description: string
-  icon: Icons
-  image: string
+export type Service = {
+  attributes: {
+    slug: string
+    name: string
+    description: string
+    icon: Icons
+    cover: {
+      data: {
+        attributes: {
+          url: string
+          name: string
+        }
+      }
+    }
+  }
 }
 
 export interface Props {
-  listOfServices: Service[]
+  listOfServices: unknown[]
 }
 
 export interface UseServicesSelectorProps {
-  listOfServices: Service[]
+  listOfServices: unknown[]
 }

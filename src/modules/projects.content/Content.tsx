@@ -144,13 +144,13 @@ export default function Content({ translations, categories, projects }: Props) {
       </div>
       <div className="content container">
         {content.map((project) => (
-          <div className="project" key={uniqid()}>
+          <a className="project" key={uniqid()}>
             <img src={project.cover} alt={`${project.name} project cover`} />
             <div className="info">
               <span className="projectTitle">{project.name}</span>
               <p className="description">{project.shortDescription}</p>
             </div>
-          </div>
+          </a>
         ))}
         {content.length === 0 && <div>No results</div>}
       </div>

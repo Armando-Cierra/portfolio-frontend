@@ -1,31 +1,41 @@
 import { useState } from 'react'
 import { Icon } from '@components.react'
-import type { UseServicesSelectorProps } from './types'
+import type { UseServicesSelectorProps, Service } from './types'
 
 export function useServicesSelector({
   listOfServices
 }: UseServicesSelectorProps) {
-  const [selectedStep, setSelectedStep] = useState('webDevelopment')
+  const [selectedStep, setSelectedStep] = useState(
+    (listOfServices[0] as Service).attributes.slug
+  )
 
   function getDescription() {
     const selectedItem = listOfServices.filter(
-      (service) => service.id === selectedStep
+      (service) => (service as Service).attributes.slug === selectedStep
     )[0]
+
+    const {
+      attributes: {
+        cover: {
+          data: {
+            attributes: { url, name: altImageName }
+          }
+        },
+        icon,
+        description
+      }
+    } = selectedItem as Service
 
     return (
       <div className="serviceDescriptionBox">
         <div className="coverBox">
-          <img
-            className="cover"
-            src={selectedItem.image}
-            alt="service cover image"
-          />
+          <img className="cover" src={url} alt={altImageName} />
           <div className="iconBox">
-            <Icon name={selectedItem.icon} />
+            <Icon name={icon} />
           </div>
         </div>
         <div className="description">
-          <p>{selectedItem.description}</p>
+          <p>{description}</p>
         </div>
       </div>
     )

@@ -8,9 +8,7 @@
     margin-bottom: 30px;
   }
   .slideshow {
-    padding: 24px 0;
     width: 100%;
-    background: var(--background_1);
     margin-bottom: 30px;
     .container {
       overflow: hidden;
@@ -38,16 +36,16 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 1rem;
+            padding: 2rem;
             h4,
             p {
               color: white;
             }
             h4 {
+              font-size: var(--large);
               font-weight: var(--bold);
             }
             p {
-              font-size: var(--small);
               opacity: 0.7;
             }
           }
@@ -66,14 +64,6 @@
       color: var(--text_muted);
       text-align: center;
       font-size: var(--base);
-    }
-  }
-}
-
-body[data-colorMode='light'] {
-  .latestProjects {
-    .slideshow {
-      background: var(--background_2);
     }
   }
 }

@@ -2,38 +2,15 @@
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import { Image } from 'astro:assets'
 import Title from '@components/title/title.astro'
-import { WorksList } from './worksList'
 import BackgorundDecoration from '@assets/background-decoration.png'
 import SuitCase from '@assets/case.png'
+import type { Props, Work } from './types'
 import './workExperience.scss'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-//TODO: Connect with API
-const worksList = [
-  {
-    name: 'Example 1',
-    image:
-      'https://yt3.googleusercontent.com/ytc/APkrFKZTZcwBZtL2KvYmF3sLLp6nu6XnPxS33PC1zieo3Q=s900-c-k-c0x00ffffff-no-rj',
-    jobType: 'full-time',
-    startDate: 'Jan 2021',
-    endDate: 'Now',
-    roles: [
-      'Design System Lead Developer (Jan 2023 - Now)',
-      'React Frontend Developer (Jan 2021 - Dec 2022)'
-    ]
-  },
-  {
-    name: 'Example 2',
-    image:
-      'https://yt3.googleusercontent.com/ytc/APkrFKZTZcwBZtL2KvYmF3sLLp6nu6XnPxS33PC1zieo3Q=s900-c-k-c0x00ffffff-no-rj',
-    jobType: 'half-time',
-    startDate: 'Jan 2019',
-    endDate: 'Dec 2019',
-    roles: []
-  }
-]
+const { workExperiences }: Props = Astro.props
 ---
 
 <section class="workExperience">
@@ -44,7 +21,52 @@ const worksList = [
       bottom={t('about.workExperience.titleBottom')}
     />
     <div class="content">
-      <WorksList worksList={worksList} />
+      <div class="worksList">
+        {
+          (workExperiences as Work[]).reverse().map((work) => {
+            const {
+              attributes: {
+                name,
+                jobType,
+                startDate,
+                endDate,
+                cover: {
+                  data: {
+                    attributes: { url, name: altCoverText }
+                  }
+                },
+                roles
+              }
+            } = work
+
+            return (
+              <div class="work">
+                <img class="companyLogo" src={url} alt={altCoverText} />
+                <div class="workContent">
+                  <div class="heading">
+                    <span class="workTitle">{name} </span>
+                    <span class="workType"> ({jobType})</span>
+                  </div>
+                  <span class="timePeriod">
+                    {startDate} - {endDate}
+                  </span>
+                  {roles.length !== 0 && (
+                    <div class="roles">
+                      <span class="roleTitle">Roles:</span>
+                      <ul>
+                        {roles.map((role) => (
+                          <li>{role.name}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+      <!-- <WorksList worksList={worksList} /> -->
       <div class="decoration">
         <Image
           class="backgroundDecoration"
