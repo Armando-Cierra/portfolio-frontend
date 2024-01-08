@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import type { UseContentProps, Project } from './types'
+import type { UseContentProps, Project, Tag } from './types'
 
 function sanitizeString(e: string) {
   return e.toLowerCase().trim()
@@ -15,7 +15,7 @@ export function useContent({ projects }: UseContentProps) {
   const content =
     search || selectedCategories.length > 0 || selectedTags.length > 0
       ? filteredContent
-      : projects
+      : (projects as Project[])
 
   function captureSearchValue(e: React.ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value)
@@ -57,25 +57,27 @@ export function useContent({ projects }: UseContentProps) {
 
   useEffect(() => {
     const sanitizedSearch = sanitizeString(search)
-    let filteredProjects: Project[] = projects
+    let filteredProjects: Project[] = projects as Project[]
 
     if (search) {
       filteredProjects = filteredProjects.filter((project) =>
-        sanitizeString(project.name).includes(sanitizedSearch)
+        sanitizeString(project.attributes.name).includes(sanitizedSearch)
       )
     }
 
     if (selectedCategories.length > 0) {
       filteredProjects = filteredProjects.filter((project) =>
-        project.category.some((category) =>
-          selectedCategories.includes(category)
-        )
+        selectedCategories.includes(project.attributes.category)
       )
     }
 
     if (selectedTags.length > 0) {
       filteredProjects = filteredProjects.filter((project) =>
-        project.tags.some((tag) => selectedTags.includes(tag))
+        selectedTags.every((tag) =>
+          project.attributes.tags.data.some(
+            (projectTag) => projectTag.attributes.name === tag
+          )
+        )
       )
     }
 

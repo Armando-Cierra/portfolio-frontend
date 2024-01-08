@@ -1,10 +1,30 @@
+export type Tag = {
+  attributes: {
+    name: string
+    category: string
+    position: string
+  }
+}
+
 export type Project = {
-  name: string
-  cover: string
-  shortDescription: string
-  description: string
-  category: string[]
-  tags: string[]
+  attributes: {
+    name: string
+    slug: string
+    shortDescription: string
+    date: string
+    category: string
+    cover: {
+      data: {
+        attributes: {
+          name: string
+          url: string
+        }
+      }
+    }
+    tags: {
+      data: Tag[]
+    }
+  }
 }
 
 export interface Props {
@@ -17,12 +37,12 @@ export interface Props {
     more: string
   }
   categories: {
-    web: string[]
-    design: string[]
+    web: Tag[]
+    design: Tag[]
   }
-  projects: Project[]
+  projects: unknown
 }
 
 export interface UseContentProps {
-  projects: Project[]
+  projects: unknown
 }

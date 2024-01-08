@@ -2,7 +2,7 @@ import { Button, Icon, Tag } from '@components.react'
 import classNames from 'classnames'
 import uniqid from 'uniqid'
 import { useContent } from './useContent'
-import type { Props } from './types'
+import type { Props, Project } from './types'
 import './content.scss'
 
 export default function Content({ translations, categories, projects }: Props) {
@@ -111,31 +111,41 @@ export default function Content({ translations, categories, projects }: Props) {
               <div className="category">
                 <span>{web}</span>
                 <div className="collection">
-                  {categories.web.map((tag) => (
-                    <Button
-                      variant="subtle"
-                      key={uniqid('webTag_')}
-                      onClick={() => toggleTagSelection(tag)}
-                      isSelected={selectedTags.includes(tag)}
-                    >
-                      {tag}
-                    </Button>
-                  ))}
+                  {categories.web.map((tag) => {
+                    const {
+                      attributes: { name: tagName }
+                    } = tag
+                    return (
+                      <Button
+                        variant="subtle"
+                        key={uniqid('webTag_')}
+                        onClick={() => toggleTagSelection(tagName)}
+                        isSelected={selectedTags.includes(tagName)}
+                      >
+                        {tagName}
+                      </Button>
+                    )
+                  })}
                 </div>
               </div>
               <div className="category">
                 <span>{design}</span>
                 <div className="collection">
-                  {categories.design.map((tag) => (
-                    <Button
-                      variant="subtle"
-                      key={uniqid('designTag_')}
-                      onClick={() => toggleTagSelection(tag)}
-                      isSelected={selectedTags.includes(tag)}
-                    >
-                      {tag}
-                    </Button>
-                  ))}
+                  {categories.design.map((tag) => {
+                    const {
+                      attributes: { name: tagName }
+                    } = tag
+                    return (
+                      <Button
+                        variant="subtle"
+                        key={uniqid('designTag_')}
+                        onClick={() => toggleTagSelection(tagName)}
+                        isSelected={selectedTags.includes(tagName)}
+                      >
+                        {tagName}
+                      </Button>
+                    )
+                  })}
                 </div>
               </div>
             </div>
@@ -143,15 +153,28 @@ export default function Content({ translations, categories, projects }: Props) {
         </div>
       </div>
       <div className="content container">
-        {content.map((project) => (
-          <a className="project" key={uniqid()}>
-            <img src={project.cover} alt={`${project.name} project cover`} />
-            <div className="info">
-              <span className="projectTitle">{project.name}</span>
-              <p className="description">{project.shortDescription}</p>
-            </div>
-          </a>
-        ))}
+        {content.map((project) => {
+          const {
+            attributes: {
+              name,
+              shortDescription,
+              cover: {
+                data: {
+                  attributes: { name: coverAltName, url }
+                }
+              }
+            }
+          } = project
+          return (
+            <a className="project" key={uniqid()}>
+              <img src={url} alt={`${coverAltName} project cover`} />
+              <div className="info">
+                <span className="projectTitle">{name}</span>
+                <p className="description">{shortDescription}</p>
+              </div>
+            </a>
+          )
+        })}
         {content.length === 0 && <div>No results</div>}
       </div>
     </>

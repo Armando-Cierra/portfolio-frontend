@@ -1,8 +1,10 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import axios from 'axios'
 import Layout from '@layouts/main/main.astro'
 import Title from '@components/title/title.astro'
 import Content from '@modules/projects.content/Content'
+import type { Tag } from '@modules/projects.content/types'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -17,35 +19,30 @@ const translations = {
   more: t('projects.more')
 }
 
-const categories = {
-  web: ['html', 'css', 'javascript', 'react'],
-  design: ['ux/ui', 'branding', 'logotypes', 'illustrations']
-}
+const getProjects = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/projects?locale=${lang}&sort[0]=position:desc&populate=*`
+  )
 
-const projects = [
-  {
-    name: 'project 1',
-    cover:
-      'https://res.cloudinary.com/dcldwtvku/image/upload/v1703908987/cover_kgc5j9.png',
-    shortDescription:
-      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
-    description:
-      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface. Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
-    category: ['web'],
-    tags: ['html', 'css', 'javascript']
-  },
-  {
-    name: 'project 2',
-    cover:
-      'https://cdn.mobygames.com/covers/8437192-the-legend-of-zelda-breath-of-the-wild-nintendo-switch-front-cov.jpg',
-    shortDescription:
-      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
-    description:
-      'Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface. Web application done using Marvel’s API to generate an easy to use Wiki, giving access to characters, comics, writers and much more inside a interconnected interface.',
-    category: ['design'],
-    tags: ['ux/ui', 'branding']
-  }
-]
+const getTags = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/tags?locale=${lang}&sort[0]=position`
+  )
+
+const [projectsRes, tagsRes] = await Promise.all([getProjects(), getTags()])
+
+const {
+  data: { data: projects }
+} = projectsRes
+
+const {
+  data: { data: tags }
+} = tagsRes
+
+const categories = {
+  web: tags.filter((tag: Tag) => tag.attributes.category === 'web'),
+  design: tags.filter((tag: Tag) => tag.attributes.category === 'design')
+}
 ---
 
 <Layout pageTitle={t('projects.pageName')}>
