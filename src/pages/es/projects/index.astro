@@ -1,0 +1,63 @@
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import axios from 'axios'
+import Layout from '@layouts/main/main.astro'
+import Title from '@components/title/title.astro'
+import Content from '@modules/projects.content/Content'
+import type { Tag } from '@modules/projects.content/types'
+import '@modules/projects.content/content.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+//TODO: Connect with API
+const translations = {
+  search: t('projects.search'),
+  placeholder: t('projects.placeholder'),
+  categories: t('projects.categories'),
+  web: t('projects.web'),
+  design: t('projects.design'),
+  more: t('projects.more')
+}
+
+const getProjects = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/projects?locale=${lang}&sort[0]=position:desc&populate=*`
+  )
+
+const getTags = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/tags?locale=${lang}&sort[0]=position`
+  )
+
+const [projectsRes, tagsRes] = await Promise.all([getProjects(), getTags()])
+
+const {
+  data: { data: projects }
+} = projectsRes
+
+const {
+  data: { data: tags }
+} = tagsRes
+
+const categories = {
+  web: tags.filter((tag: Tag) => tag.attributes.category === 'web'),
+  design: tags.filter((tag: Tag) => tag.attributes.category === 'design')
+}
+---
+
+<Layout pageTitle={t('projects.pageName')}>
+  <section class="projects">
+    <Title
+      size="large"
+      top={t('projects.titleTop')}
+      bottom={t('projects.titleBottom')}
+    />
+    <Content
+      client:only
+      translations={translations}
+      categories={categories}
+      projects={projects}
+    />
+  </section>
+</Layout>

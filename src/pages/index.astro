@@ -1,1 +1,40 @@
-<meta http-equiv="refresh" content="0;url=/en/" />
+---
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import axios from 'axios'
+import Layout from '@layouts/main/main.astro'
+import Welcome from '@modules/home.welcome/welcome.astro'
+import LatestProjects from '@modules/home.latestProjects/latestProjects.astro'
+import Services from '@modules/home.services/services.astro'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const getProjects = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/projects?locale=${lang}&filters[partOfSlideshow][$eq]=true&sort[0]=position:desc&populate=*`
+  )
+
+const getServices = () =>
+  axios.get(
+    `https://portfolio-api-qzkq2.ondigitalocean.app/api/services?locale=${lang}&populate=*`
+  )
+
+const [projectsRes, servicesRes] = await Promise.all([
+  getProjects(),
+  getServices()
+])
+
+const {
+  data: { data: projects }
+} = projectsRes
+
+const {
+  data: { data: services }
+} = servicesRes
+---
+
+<Layout pageTitle={t('home.pageName')}>
+  <Welcome />
+  <LatestProjects {projects} />
+  <Services {services} />
+</Layout>

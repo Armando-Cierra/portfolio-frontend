@@ -5,6 +5,7 @@ import Layout from '@layouts/main/main.astro'
 import Title from '@components/title/title.astro'
 import Content from '@modules/projects.content/Content'
 import type { Tag } from '@modules/projects.content/types'
+import '@modules/projects.content/content.scss'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)

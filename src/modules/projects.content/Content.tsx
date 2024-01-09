@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import uniqid from 'uniqid'
 import { useContent } from './useContent'
 import type { Props, Project } from './types'
-import './content.scss'
 
 export default function Content({ translations, categories, projects }: Props) {
   const {

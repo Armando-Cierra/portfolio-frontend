@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import Button from '@components/button/button.astro'
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Logo from '@components/logo/Logo.astro'
@@ -6,7 +7,7 @@ import Icon from '@components/icon/icon.astro'
 import './navbar.scss'
 
 const url = Astro.url
-const pathname = url.pathname.slice(4)
+const pathname = url.pathname
 const lang = getLangFromUrl(url)
 const t = useTranslations(lang)
 const colorModesTranslations = {
@@ -24,29 +25,32 @@ const colorModesTranslations = {
       <a
         class:list={[
           'link',
-          { 'link--active': pathname === '', 'link--disabled': pathname === '' }
+          {
+            'link--active': pathname === '/' || pathname === '/es/',
+            'link--disabled': pathname === '/' || pathname === '/es/'
+          }
         ]}
-        href={`/${lang}/`}>{t('navbar.home')}</a
+        href={getRelativeLocaleUrl(lang, '')}>{t('navbar.home')}</a
       >
       <a
         class:list={[
           'link',
           {
-            'link--active': pathname === 'about',
-            'link--disabled': pathname === 'about'
+            'link--active': pathname.includes('about'),
+            'link--disabled': pathname.includes('about')
           }
         ]}
-        href={`/${lang}/about`}>{t('navbar.about')}</a
+        href={getRelativeLocaleUrl(lang, 'about')}>{t('navbar.about')}</a
       >
       <a
         class:list={[
           'link',
           {
-            'link--active': pathname === 'projects',
-            'link--disabled': pathname === 'projects'
+            'link--active': pathname.includes('projects'),
+            'link--disabled': pathname.includes('projects')
           }
         ]}
-        href={`/${lang}/projects`}>{t('navbar.projects')}</a
+        href={getRelativeLocaleUrl(lang, 'projects')}>{t('navbar.projects')}</a
       >
       <div class="languages">
         <a
@@ -57,7 +61,7 @@ const colorModesTranslations = {
               'link--disabled': lang === 'en'
             }
           ]}
-          href={`/en/${pathname}`}>EN</a
+          href={getRelativeLocaleUrl('en', pathname.replace('/es/', ''))}>EN</a
         >
         <div class="decorator"></div>
         <a
@@ -68,7 +72,7 @@ const colorModesTranslations = {
               'link--disabled': lang === 'es'
             }
           ]}
-          href={`/es/${pathname}`}>ES</a
+          href={getRelativeLocaleUrl('es', pathname)}>ES</a
         >
       </div>
       <div class="tooltipBox">

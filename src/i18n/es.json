@@ -1,11 +1,60 @@
 {
-  "home": {
-    "pageName": "Inicio"
-  },
-  "about": {
-    "pageName": "Acerca De"
-  },
-  "projects": {
-    "pageName": "Proyectos"
-  }
+  "navbar.jobTitle": "Desarrollador Web",
+  "navbar.home": "Inicio",
+  "navbar.about": "Acerca De",
+  "navbar.projects": "Proyectos",
+  "navbar.darkMode": "Modo Oscuro",
+  "navbar.lightMode": "Modo Claro",
+
+  "mobileMenu.Menu": "Menu",
+  "mobileMenu.Languages": "Idiomas",
+  "mobileMenu.ColorMode": "Modos de Color",
+
+  "home.pageName": "Inicio",
+  "home.welcome.titleTop": "Hey! Bienvenido a Mi",
+  "home.welcome.titleBottom": "Portafolio",
+  "home.welcome.aboutMeBtn": "Mas Acerca De Mí",
+  "home.welcome.githubBtn": "Perfil de Github",
+  "home.latestProjects.titleTop": "Últimos",
+  "home.latestProjects.titleBottom": "Proyectos",
+  "home.latestProjects.description": "¿Buscas algo específico? Sumérgete en mi portafolio y encuentra una amplia gama de proyectos. 🚀",
+  "home.latestProjects.button": "Ver Más Proyectos",
+  "home.services.titleTop": "Lista De",
+  "home.services.titleBottom": "Servicios",
+
+  "about.pageName": "Acerca De",
+  "about.intro.titleTop": "Conoce Más",
+  "about.intro.titleBottom": "Acerca De Mí",
+  "about.intro.description": "Soy un apasionado desarrollador web dedicado a crear experiencias de usuario funcionales y únicas. Me encantan las nuevas tecnologías tanto como las nuevas metas y desafíos.",
+  "about.intro.cvButton": "Descarga Mi CV",
+  "about.workExperience.titleTop": "Experiencia",
+  "about.workExperience.titleBottom": "Laboral",
+  "about.skills.web.titleTop": "Abilidades",
+  "about.skills.web.titleBottom": "Web",
+  "about.skills.design.titleTop": "Apps De",
+  "about.skills.design.titleBottom": "Diseño",
+
+  "projects.pageName": "Proyectos",
+  "projects.titleTop": "Lista De",
+  "projects.titleBottom": "Proyectos",
+  "projects.search": "Buscar",
+  "projects.placeholder": "Nonbre Del proyecto...",
+  "projects.categories": "Categorías",
+  "projects.web": "Web",
+  "projects.design": "Diseño",
+  "projects.more": "Más",
+
+  "contact.titleTop": "¡Vamos a Hablar!",
+  "contact.titleBottom": "Contáctame",
+  "contact.fields.fullname": "Nombre Completo",
+  "contact.fields.fullname.placeholder": "Jhon Doe",
+  "contact.fields.phoneNumber": "Número de Teléfono",
+  "contact.fields.email": "Correo",
+  "contact.fields.message": "Mensaje",
+  "contact.fields.message.placeholder": "Tus ideas van aquí...",
+  "contact.send": "Envíar",
+  "contact.cleanForm": "Limpiar",
+  "contact.error.emptyField": "Por favor, complete este campo.",
+  "contact.error.invalidEmail": "Mensaje envíado exitosamente🚀",
+  "contact.submit.error": "Ups! Hubo un error con el servidor. Intente más tarde o contácteme a través de redes sociales 😿"
 }
