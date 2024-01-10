@@ -17,4 +17,5 @@ export type Project = {
 
 export interface Props {
   projects: unknown[]
+  lang: string
 }

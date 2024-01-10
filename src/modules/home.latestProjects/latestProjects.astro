@@ -22,7 +22,7 @@ const { projects } = Astro.props
   />
   <div class="slideshow">
     <div class="container">
-      <Carousel projects={projects} client:load />
+      <Carousel lang={lang} projects={projects} client:load />
     </div>
   </div>
   <div class="container descriptionContainer">

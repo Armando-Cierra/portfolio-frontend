@@ -36,5 +36,12 @@ export interface Project {
     gallery: { data: Image[] }
     buttons: Button[]
     slug: string
+    localizations: {
+      data: {
+        attributes: {
+          slug: string
+        }
+      }[]
+    }
   }
 }

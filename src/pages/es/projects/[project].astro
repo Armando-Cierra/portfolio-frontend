@@ -32,13 +32,9 @@ const {
     longDescription,
     tags: { data: tags },
     buttons,
-    cover: {
-      data: {
-        attributes: { url: coverUrl, name: coverName }
-      }
-    },
     gallery: { data: gallery },
-    slug
+    slug,
+    localizations: { data: translatedProject }
   }
 } = (projectRes as Project[])[0]
 
@@ -47,7 +43,11 @@ const pathname = url.pathname
 const projectsURL = pathname.replace(`/${slug}`, '')
 ---
 
-<Layout pageTitle={project}>
+<Layout
+  pageTitle={project as string}
+  translatedSlug={translatedProject[0].attributes.slug}
+  projectSlug={slug}
+>
   <section class="singleProject">
     <div class="container">
       <div class="info">

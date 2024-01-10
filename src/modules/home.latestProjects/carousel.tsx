@@ -2,9 +2,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCoverflow, Autoplay } from 'swiper/modules'
 import type { Props, Project } from './types'
 
-export function Carousel({ projects }: Props) {
-  function getTime(date: string) {
-    return new Date(date).getTime()
+export function Carousel({ projects, lang }: Props) {
+  function getLink(slug: string) {
+    if (lang === 'es') return `/es/projects/${slug}/`
+    return `projects/${slug}/`
   }
 
   return (
@@ -43,7 +44,7 @@ export function Carousel({ projects }: Props) {
         } = project as Project
         return (
           <SwiperSlide key={slug}>
-            <a href={`/projects/${slug}`}>
+            <a href={getLink(slug)}>
               <img src={url} alt={altCoverText} />
               <div className="info">
                 <h4>{name}</h4>

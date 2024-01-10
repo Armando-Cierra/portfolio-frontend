@@ -1,5 +1,5 @@
 ---
-import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import { getLangFromUrl } from '@i18n/utils'
 import { ViewTransitions } from 'astro:transitions'
 import Navbar from '@modules/navbar/navbar.astro'
 import MobileMenu from '@modules/mobileMenu/mobileMenu.astro'
@@ -7,9 +7,17 @@ import Contact from '@modules/contact/contact.astro'
 import Footer from '@modules/footer/footer.astro'
 import '@styles/variables.scss'
 import './main.scss'
+import type { AstroSlotAttributes } from 'node_modules/astro/dist/@types/astro'
+
+export interface Props {
+  pageTitle: string
+  projectSlug?: string
+  translatedSlug?: string
+  children: astroHTML.JSX.SlotHTMLAttributes & AstroSlotAttributes
+}
 
 const lang = getLangFromUrl(Astro.url)
-const { pageTitle } = Astro.props
+const { pageTitle, translatedSlug, projectSlug }: Props = Astro.props
 ---
 
 <!doctype html>
@@ -47,7 +55,11 @@ const { pageTitle } = Astro.props
 
       document.addEventListener('astro:after-swap', loadThemes)
     </script>
-    <Navbar transition:persist />
+    <Navbar
+      translatedProjectSlug={translatedSlug}
+      projectSlug={projectSlug}
+      transition:persist
+    />
     <MobileMenu transition:persist />
     <main>
       <slot />

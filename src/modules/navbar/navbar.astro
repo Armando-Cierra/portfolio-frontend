@@ -6,6 +6,12 @@ import Logo from '@components/logo/Logo.astro'
 import Icon from '@components/icon/icon.astro'
 import './navbar.scss'
 
+interface Props {
+  projectSlug?: string
+  translatedProjectSlug?: string
+}
+
+const { projectSlug, translatedProjectSlug }: Props = Astro.props
 const url = Astro.url
 const pathname = url.pathname
 const lang = getLangFromUrl(url)
@@ -13,6 +19,36 @@ const t = useTranslations(lang)
 const colorModesTranslations = {
   lightMode: t('navbar.lightMode'),
   darkMode: t('navbar.darkMode')
+}
+
+function getLanguageURL(lang: 'es' | 'en') {
+  const languages = {
+    en: () => {
+      if (projectSlug) {
+        let newURL = getRelativeLocaleUrl('en', pathname)
+        newURL = newURL.replace(`es/`, '')
+        newURL = newURL.replace(`${projectSlug}/`, '')
+        newURL = newURL + `${translatedProjectSlug}/`
+
+        return newURL
+      }
+
+      return getRelativeLocaleUrl('en', pathname.replace('/es/', ''))
+    },
+    es: () => {
+      if (projectSlug) {
+        let newURL = getRelativeLocaleUrl('es', pathname)
+        newURL = newURL.replace(`${projectSlug}/`, '')
+        newURL = newURL + `${translatedProjectSlug}/`
+
+        return newURL
+      }
+
+      return getRelativeLocaleUrl('es', pathname)
+    }
+  }
+
+  return languages[lang]()
 }
 ---
 
@@ -61,7 +97,7 @@ const colorModesTranslations = {
               'link--disabled': lang === 'en'
             }
           ]}
-          href={getRelativeLocaleUrl('en', pathname.replace('/es/', ''))}>EN</a
+          href={getLanguageURL('en')}>EN</a
         >
         <div class="decorator"></div>
         <a
@@ -72,7 +108,7 @@ const colorModesTranslations = {
               'link--disabled': lang === 'es'
             }
           ]}
-          href={getRelativeLocaleUrl('es', pathname)}>ES</a
+          href={getLanguageURL('es')}>ES</a
         >
       </div>
       <div class="tooltipBox">
