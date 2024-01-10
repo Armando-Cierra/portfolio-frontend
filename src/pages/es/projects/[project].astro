@@ -50,56 +50,48 @@ const projectsURL = pathname.replace(`/${slug}`, '')
 <Layout pageTitle={project}>
   <section class="singleProject">
     <div class="container">
-      <div class="header">
-        <div class="info">
-          <a href={`${projectsURL}/`}>
-            <Button variant="ghost2">{t('project.back')}</Button>
-          </a>
-          <Title
-            align="left"
-            size="large"
-            top={t('project.titleTop')}
-            bottom={name}
-          />
-          <div class="cover cover--mobile">
-            <img src={coverUrl} alt={coverName} />
-          </div>
-          <p class="tags">
-            <span class="tagsTitle">{t('project.tags')}:</span>
-            <span class="tagsList"
-              >{
-                tags.map((tag, index) => {
-                  if (index + 1 === tags.length) {
-                    return `${tag.attributes.name}.`
-                  }
+      <div class="info">
+        <a class="backButton" href={`${projectsURL}/`}>
+          <Button variant="ghost2">{t('project.back')}</Button>
+        </a>
+        <Title
+          align="left"
+          size="large"
+          top={t('project.titleTop')}
+          bottom={name}
+        />
+        <p class="tags">
+          <span class="tagsTitle">{t('project.tags')}:</span>
+          <span class="tagsList"
+            >{
+              tags.map((tag, index) => {
+                if (index + 1 === tags.length) {
+                  return `${tag.attributes.name}.`
+                }
 
-                  return `${tag.attributes.name}, `
-                })
-              }</span
-            >
-          </p>
-          <div class="description">
+                return `${tag.attributes.name}, `
+              })
+            }</span
+          >
+        </p>
+        <div class="description">
+          {
+            longDescription.map((paragraph) =>
+              paragraph.children.map((text) => <p>{text.text}</p>)
+            )
+          }
+          <div class="buttonsBox">
             {
-              longDescription.map((paragraph) =>
-                paragraph.children.map((text) => <p>{text.text}</p>)
-              )
+              buttons.map((button) => (
+                <a href={button.url} target="_blank">
+                  <Button variant={button.type as 'solid' | 'outline'}>
+                    {button.text}
+                    <Icon name={button.icon as AvailableIcons} />
+                  </Button>
+                </a>
+              ))
             }
-            <div class="buttonsBox">
-              {
-                buttons.map((button) => (
-                  <a href={button.url} target="_blank">
-                    <Button variant={button.type as 'solid' | 'outline'}>
-                      {button.text}
-                      <Icon name={button.icon as AvailableIcons} />
-                    </Button>
-                  </a>
-                ))
-              }
-            </div>
           </div>
-        </div>
-        <div class="cover cover--desktop">
-          <img src={coverUrl} alt={coverName} />
         </div>
       </div>
       <div class="gallery">

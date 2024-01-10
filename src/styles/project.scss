@@ -2,52 +2,32 @@
   padding: 50px 0;
   .container {
     padding: 0 1rem;
-    .header {
+    .info {
       display: flex;
-      justify-content: space-between;
-      gap: 32px;
+      flex-direction: column;
+      gap: 24px;
       margin-bottom: 50px;
-      .info {
-        max-width: 555px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        .backButton {
-          width: fit-content;
+      .backButton {
+        width: fit-content;
+      }
+      .tags {
+        .tagsTitle {
+          font-weight: var(--bold);
         }
-        .tags {
-          .tagsTitle {
-            font-weight: var(--bold);
-          }
-          .tagsList {
-            color: var(--text_muted);
-          }
-        }
-        .description {
-          p {
-            margin-bottom: 24px;
-            color: var(--text_muted);
-          }
-          .buttonsBox {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-          }
+        .tagsList {
+          color: var(--text_muted);
         }
       }
-      .cover {
-        width: 100%;
-        position: relative;
-        img {
-          position: absolute;
-          right: 0;
-          width: 100%;
-          max-width: 330px;
-          border-radius: 8px;
+      .description {
+        p {
+          margin-bottom: 24px;
+          color: var(--text_muted);
         }
-      }
-      .cover--mobile {
-        display: none;
+        .buttonsBox {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
       }
     }
     .gallery {
@@ -68,4 +48,7 @@
       }
     }
   }
+}
+
+@media (max-width: 1024px) {
 }
