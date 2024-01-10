@@ -60,7 +60,11 @@ const { pageTitle, translatedSlug, projectSlug }: Props = Astro.props
       projectSlug={projectSlug}
       transition:persist
     />
-    <MobileMenu transition:persist />
+    <MobileMenu
+      translatedProjectSlug={translatedSlug}
+      projectSlug={projectSlug}
+      transition:persist
+    />
     <main>
       <slot />
       <Contact />

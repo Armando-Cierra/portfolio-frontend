@@ -1,13 +1,50 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n'
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Logo from '@components/logo/Logo.astro'
 import Icon from '@components/icon/icon.astro'
 import './mobileMenu.scss'
 
+interface Props {
+  projectSlug?: string
+  translatedProjectSlug?: string
+}
+
+const { projectSlug, translatedProjectSlug }: Props = Astro.props
 const url = Astro.url
-const pathname = url.pathname.slice(4)
+const pathname = url.pathname
 const lang = getLangFromUrl(url)
 const t = useTranslations(lang)
+
+function getLanguageURL(lang: 'es' | 'en') {
+  const languages = {
+    en: () => {
+      if (projectSlug) {
+        let newURL = getRelativeLocaleUrl('en', pathname)
+        newURL = newURL.replace(`es/`, '')
+        newURL = newURL.replace(`${projectSlug}/`, '')
+        newURL = newURL + `${translatedProjectSlug}/`
+
+        return newURL
+      }
+
+      return getRelativeLocaleUrl('en', pathname.replace('/es/', ''))
+    },
+    es: () => {
+      if (projectSlug) {
+        let newURL = getRelativeLocaleUrl('es', pathname)
+        newURL = newURL.replace(`${projectSlug}/`, '')
+        newURL = newURL + `${translatedProjectSlug}/`
+
+        return newURL
+      }
+
+      return getRelativeLocaleUrl('es', pathname)
+    }
+  }
+
+  return languages[lang]()
+}
 ---
 
 <header class="mobileHeader">
@@ -25,7 +62,7 @@ const t = useTranslations(lang)
           'mobileLink--disabled': pathname === ''
         }
       ]}
-      href={`/${lang}/`}>{t('navbar.home')}</a
+      href={getRelativeLocaleUrl(lang, '')}>{t('navbar.home')}</a
     >
     <a
       class:list={[
@@ -35,7 +72,7 @@ const t = useTranslations(lang)
           'mobileLink--disabled': pathname === 'about'
         }
       ]}
-      href={`/${lang}/about`}>{t('navbar.about')}</a
+      href={getRelativeLocaleUrl(lang, 'about')}>{t('navbar.about')}</a
     >
     <a
       class:list={[
@@ -45,7 +82,7 @@ const t = useTranslations(lang)
           'mobileLink--disabled': pathname === 'projects'
         }
       ]}
-      href={`/${lang}/projects`}>{t('navbar.projects')}</a
+      href={getRelativeLocaleUrl(lang, 'projects')}>{t('navbar.projects')}</a
     >
   </div>
   <div class="mobileSettings">
@@ -60,7 +97,7 @@ const t = useTranslations(lang)
               'mobileLink--disabled': lang === 'en'
             }
           ]}
-          href={`/en/${pathname}`}>EN</a
+          href={getLanguageURL('en')}>EN</a
         >
         <div class="decorator"></div>
         <a
@@ -71,7 +108,7 @@ const t = useTranslations(lang)
               'mobileLink--disabled': lang === 'es'
             }
           ]}
-          href={`/es/${pathname}`}>ES</a
+          href={getLanguageURL('es')}>ES</a
         >
       </div>
     </div>
