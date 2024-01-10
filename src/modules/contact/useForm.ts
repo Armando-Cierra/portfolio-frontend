@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent } from 'react'
+import axios from 'axios'
 import { toast } from 'react-toastify'
 import type { Props } from './types'
 
@@ -129,11 +130,41 @@ export default function useForm({ translations }: Props) {
   }
 
   function submitForm() {
-    // TODO
-    cleanForm()
-    toast.success(translations.submitSuccess, {
-      position: toast.POSITION.TOP_RIGHT
-    })
+    axios
+      .post('https://portfolio-api-qzkq2.ondigitalocean.app/api/email/', {
+        to: 'armando.cierra@icloud.com',
+        from: 'armando_cierra@outlook.com',
+        subject: 'PORTFOLIO MESSAGE',
+        html: `
+          <p>
+            <span>Full Name:</span>
+            <span>${formFields.fullname}</span>
+          <p/>
+          <p>
+            <span>Phone Number:</span>
+            <span>${formFields.phoneNumber.extention} ${formFields.phoneNumber.number}</span>
+          <p/>
+          <p>
+            <span>Email:</span>
+            <span>${formFields.email}</span>
+          <p/>
+          <p>
+            <span>Message:</span>
+            <span>${formFields.message}</span>
+          <p/>
+        `
+      })
+      .then(() => {
+        toast.success(translations.submitSuccess, {
+          position: toast.POSITION.TOP_RIGHT
+        })
+        cleanForm()
+      })
+      .catch(() => {
+        toast.error(translations.submitSuccess, {
+          position: toast.POSITION.TOP_RIGHT
+        })
+      })
   }
 
   const selectingCountry = (extention: string) => () => {
