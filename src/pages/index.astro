@@ -34,7 +34,9 @@ const {
 ---
 
 <Layout pageTitle={t('home.pageName')}>
-  <Welcome />
-  <LatestProjects {projects} />
-  <Services {services} />
+  <>
+    <Welcome />
+    <LatestProjects {projects} />
+    <Services {services} />
+  </>
 </Layout>

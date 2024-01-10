@@ -34,7 +34,9 @@ const {
 ---
 
 <Layout pageTitle={t('about.pageName')}>
-  <Intro />
-  <WorkExperience {workExperiences} />
-  <Skills {skills} />
+  <>
+    <Intro />
+    <WorkExperience {workExperiences} />
+    <Skills {skills} />
+  </>
 </Layout>
