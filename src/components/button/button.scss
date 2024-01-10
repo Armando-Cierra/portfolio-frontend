@@ -60,6 +60,25 @@
   }
 }
 
+.button--ghost2 {
+  background: var(--background_0);
+  border: var(--background_0);
+  color: var(--text_muted);
+  .icon {
+    color: var(--text_muted);
+    transition: ease-in-out 0.15s;
+  }
+  &:hover,
+  &:focus-visible {
+    color: var(--text);
+    background: var(--background_1);
+    border-color: var(--background_1);
+    .icon {
+      color: var(--text);
+    }
+  }
+}
+
 .button--subtle {
   background: var(--background_1);
   border: 1px solid var(--border);

@@ -44,6 +44,10 @@
   "projects.design": "Design",
   "projects.more": "More",
 
+  "project.titleTop": "Project:",
+  "project.tags": "Tags",
+  "project.back": "Back",
+
   "contact.titleTop": "Let's Talk!",
   "contact.titleBottom": "Contact Me",
   "contact.fields.fullname": "Full Name",

@@ -5,7 +5,7 @@ import Layout from '@layouts/main/main.astro'
 import Title from '@components/title/title.astro'
 import Content from '@modules/projects.content/Content'
 import type { Tag } from '@modules/projects.content/types'
-import '@modules/projects.content/content.scss'
+import '@styles/projects.scss'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -44,6 +44,9 @@ const categories = {
   web: tags.filter((tag: Tag) => tag.attributes.category === 'web'),
   design: tags.filter((tag: Tag) => tag.attributes.category === 'design')
 }
+
+const url = Astro.url
+const pathname = url.pathname
 ---
 
 <Layout pageTitle={t('projects.pageName')}>
@@ -58,6 +61,7 @@ const categories = {
       translations={translations}
       categories={categories}
       projects={projects}
+      currentURL={pathname}
     />
   </section>
 </Layout>

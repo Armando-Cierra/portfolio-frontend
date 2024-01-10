@@ -1,4 +1,4 @@
-type Icon =
+export type Icon =
   | 'moon'
   | 'sun'
   | 'facebook'

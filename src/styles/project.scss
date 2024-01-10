@@ -1,0 +1,71 @@
+.singleProject {
+  padding: 50px 0;
+  .container {
+    padding: 0 1rem;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 50px;
+      .info {
+        max-width: 555px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .backButton {
+          width: fit-content;
+        }
+        .tags {
+          .tagsTitle {
+            font-weight: var(--bold);
+          }
+          .tagsList {
+            color: var(--text_muted);
+          }
+        }
+        .description {
+          p {
+            margin-bottom: 24px;
+            color: var(--text_muted);
+          }
+          .buttonsBox {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          }
+        }
+      }
+      .cover {
+        width: 100%;
+        position: relative;
+        img {
+          position: absolute;
+          right: 0;
+          width: 100%;
+          max-width: 330px;
+          border-radius: 8px;
+        }
+      }
+      .cover--mobile {
+        display: none;
+      }
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 16px;
+      justify-items: center;
+      align-items: center;
+      .galleryItem {
+        width: 100%;
+        max-width: 550px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: ease-in-out 0.15s;
+        &:hover {
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+}

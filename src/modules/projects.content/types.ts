@@ -41,6 +41,7 @@ export interface Props {
     design: Tag[]
   }
   projects: unknown
+  currentURL: string
 }
 
 export interface UseContentProps {

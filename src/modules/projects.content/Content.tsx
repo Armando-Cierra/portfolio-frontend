@@ -2,9 +2,14 @@ import { Button, Icon, Tag } from '@components.react'
 import classNames from 'classnames'
 import uniqid from 'uniqid'
 import { useContent } from './useContent'
-import type { Props, Project } from './types'
+import type { Props } from './types'
 
-export default function Content({ translations, categories, projects }: Props) {
+export default function Content({
+  translations,
+  categories,
+  projects,
+  currentURL
+}: Props) {
   const {
     search: searchLabel,
     categories: categoriesPlaceholder,
@@ -22,7 +27,6 @@ export default function Content({ translations, categories, projects }: Props) {
     toggleCategory,
     showTags,
     toggleTagBox,
-    closeTagBox,
     toggleTagSelection,
     removeTag,
     selectedTags
@@ -157,6 +161,7 @@ export default function Content({ translations, categories, projects }: Props) {
             attributes: {
               name,
               shortDescription,
+              slug,
               cover: {
                 data: {
                   attributes: { name: coverAltName, url }
@@ -165,7 +170,7 @@ export default function Content({ translations, categories, projects }: Props) {
             }
           } = project
           return (
-            <a className="project" key={uniqid()}>
+            <a className="project" key={uniqid()} href={`${currentURL}${slug}`}>
               <img src={url} alt={`${coverAltName} project cover`} />
               <div className="info">
                 <span className="projectTitle">{name}</span>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import type { UseContentProps, Project, Tag } from './types'
+import type { UseContentProps, Project } from './types'
 
 function sanitizeString(e: string) {
   return e.toLowerCase().trim()
@@ -33,10 +33,6 @@ export function useContent({ projects }: UseContentProps) {
 
   function toggleTagBox() {
     setShowTags((prevState) => !prevState)
-  }
-
-  function closeTagBox() {
-    setShowTags(false)
   }
 
   function toggleTagSelection(selectedTag: string) {
@@ -92,7 +88,6 @@ export function useContent({ projects }: UseContentProps) {
     toggleCategory,
     showTags,
     toggleTagBox,
-    closeTagBox,
     toggleTagSelection,
     removeTag,
     selectedTags
