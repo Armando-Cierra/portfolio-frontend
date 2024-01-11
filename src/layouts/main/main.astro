@@ -5,6 +5,7 @@ import Navbar from '@modules/navbar/navbar.astro'
 import MobileMenu from '@modules/mobileMenu/mobileMenu.astro'
 import Contact from '@modules/contact/contact.astro'
 import Footer from '@modules/footer/footer.astro'
+import Favicon from '@assets/favicon.ico'
 import '@styles/variables.scss'
 import './main.scss'
 import type { AstroSlotAttributes } from 'node_modules/astro/dist/@types/astro'
@@ -13,11 +14,12 @@ export interface Props {
   pageTitle: string
   projectSlug?: string
   translatedSlug?: string
-  children: astroHTML.JSX.SlotHTMLAttributes & AstroSlotAttributes
+  description?: string
 }
 
 const lang = getLangFromUrl(Astro.url)
-const { pageTitle, translatedSlug, projectSlug }: Props = Astro.props
+const { pageTitle, translatedSlug, projectSlug, description }: Props =
+  Astro.props
 ---
 
 <!doctype html>
@@ -26,6 +28,8 @@ const { pageTitle, translatedSlug, projectSlug }: Props = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
+    <link rel="icon" href={Favicon} />
+    {description && <meta name="”description”" content={description} />}
     <ViewTransitions />
   </head>
 

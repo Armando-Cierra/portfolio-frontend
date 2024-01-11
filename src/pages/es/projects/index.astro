@@ -49,7 +49,10 @@ const url = Astro.url
 const pathname = url.pathname
 ---
 
-<Layout pageTitle={t('projects.pageName')}>
+<Layout
+  pageTitle={t('projects.pageName')}
+  description={t('projects.description')}
+>
   <section class="projects">
     <Title
       size="large"

@@ -11,6 +11,7 @@
   "mobileMenu.ColorMode": "Modos de Color",
 
   "home.pageName": "Inicio",
+  "home.description": "Portafolio personal del desarrollador web y diseñador gráfico Armando Cierra.",
   "home.welcome.titleTop": "Hey! Bienvenido a Mi",
   "home.welcome.titleBottom": "Portafolio",
   "home.welcome.aboutMeBtn": "Mas Acerca De Mí",
@@ -23,6 +24,7 @@
   "home.services.titleBottom": "Servicios",
 
   "about.pageName": "Acerca De",
+  "about.description": "Información básica, laboral y principales habilidades del desarrollador web y diseñador gráfico Armando Cierra.",
   "about.intro.titleTop": "Conoce Más",
   "about.intro.titleBottom": "Acerca De Mí",
   "about.intro.description": "Soy un apasionado desarrollador web dedicado a crear experiencias de usuario funcionales y únicas. Me encantan las nuevas tecnologías tanto como las nuevas metas y desafíos.",
@@ -35,6 +37,7 @@
   "about.skills.design.titleBottom": "Diseño",
 
   "projects.pageName": "Proyectos",
+  "projects.description": "Listado de proyectos de desarrollo web y diseño graficos realizados por Armando Cierra.",
   "projects.titleTop": "Lista De",
   "projects.titleBottom": "Proyectos",
   "projects.search": "Buscar",

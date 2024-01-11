@@ -11,6 +11,7 @@
   "mobileMenu.ColorMode": "Color Modes",
 
   "home.pageName": "Home",
+  "home.description": "Personal portfolio of the web developer and graphic designer Armando Cierra.",
   "home.welcome.titleTop": "Hey! Welcome To My",
   "home.welcome.titleBottom": "Portfolio",
   "home.welcome.aboutMeBtn": "More About Me",
@@ -23,6 +24,7 @@
   "home.services.titleBottom": "Services",
 
   "about.pageName": "About",
+  "about.description": "Basic information, work experience, and main skills of the web developer and graphic designer Armando Cierra.",
   "about.intro.titleTop": "Know More",
   "about.intro.titleBottom": "About Me",
   "about.intro.description": "I’m a passionate Web Developer who dedicates to create functional and unique user experiences. I love new technologies as much as new goals and challenges.",
@@ -35,6 +37,7 @@
   "about.skills.design.titleBottom": "Apps",
 
   "projects.pageName": "Projects",
+  "projects.description": "List of web development and graphic design projects carried out by Armando Cierra.",
   "projects.titleTop": "List Of",
   "projects.titleBottom": "Projects",
   "projects.search": "Search",
