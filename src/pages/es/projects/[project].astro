@@ -8,6 +8,7 @@ import Icon from '@components/icon/icon.astro'
 import type { Icon as AvailableIcons } from '@components/icon/types'
 import type { Project } from '@types'
 import '@styles/project.scss'
+import 'medium-zoom/dist/style.css'
 
 export const prerender = false
 
@@ -103,11 +104,12 @@ const projectsURL = pathname.replace(`/${slug}`, '')
                   class="galleryItem"
                   src={item.attributes.url}
                   alt={item.attributes.name}
+                  data-zoomable
                 />
               )
             if (item.attributes.mime.includes('video'))
               return (
-                <video class="galleryItem" autoplay muted loop>
+                <video class="galleryItem" data-zoomable autoplay muted loop>
                   <source src={item.attributes.url} />
                 </video>
               )
@@ -117,3 +119,17 @@ const projectsURL = pathname.replace(`/${slug}`, '')
     </div>
   </section>
 </Layout>
+
+<script>
+  import mediumZoom from 'medium-zoom/dist/pure'
+
+  function executeMediumZoom() {
+    mediumZoom('[data-zoomable]', {
+      background: 'var(--background_0)',
+      scrollOffset: 40
+    })
+  }
+
+  executeMediumZoom()
+  document.addEventListener('astro:after-swap', executeMediumZoom)
+</script>

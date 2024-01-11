@@ -50,5 +50,6 @@
   }
 }
 
-@media (max-width: 1024px) {
+.galleryItem {
+  z-index: 9000 !important;
 }
