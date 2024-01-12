@@ -9,6 +9,8 @@ export type Icon =
   | 'case'
   | 'doubleChevronDown'
   | 'cv'
+  | 'web'
+  | 'leftArrow'
 
 export interface Props extends astroHTML.JSX.SVGAttributes {
   customClass?: string

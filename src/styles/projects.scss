@@ -211,6 +211,9 @@ body[data-colormode='light'] {
 
 @media (max-width: 1024px) {
   .projects {
+    .searchBar .filters .filtersAnimationBox .container .category .collection {
+      justify-content: center;
+    }
     .content {
       grid-template-columns: repeat(2, 1fr);
     }

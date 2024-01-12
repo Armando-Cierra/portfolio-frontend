@@ -53,7 +53,9 @@ const projectsURL = pathname.replace(`/${slug}`, '')
     <div class="container">
       <div class="info">
         <a class="backButton" href={`${projectsURL}/`}>
-          <Button variant="ghost2">{t('project.back')}</Button>
+          <Button variant="ghost2">
+            <Icon name="leftArrow" />{t('project.back')}
+          </Button>
         </a>
         <Title
           align="left"
