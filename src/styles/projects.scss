@@ -180,6 +180,22 @@
         }
       }
     }
+    .noResults {
+      width: 100%;
+      padding: 50px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      img {
+        width: 50px;
+        height: auto;
+        margin-bottom: 24px;
+      }
+      span {
+        color: var(--text_muted);
+      }
+    }
   }
 }
 

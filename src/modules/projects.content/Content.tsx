@@ -179,7 +179,16 @@ export default function Content({
             </a>
           )
         })}
-        {content.length === 0 && <div>No results</div>}
+        <div></div>
+        {content.length === 0 && (
+          <div className="noResults">
+            <img
+              src="https://res.cloudinary.com/dcldwtvku/image/upload/v1705020910/My-Portfolio/no_result_a0793c6ba6.png"
+              alt="warning"
+            />
+            <span>{translations.noResults}</span>
+          </div>
+        )}
       </div>
     </>
   )

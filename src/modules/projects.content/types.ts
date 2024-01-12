@@ -35,6 +35,7 @@ export interface Props {
     web: string
     design: string
     more: string
+    noResults: string
   }
   categories: {
     web: Tag[]

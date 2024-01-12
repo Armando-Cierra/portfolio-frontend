@@ -1,24 +1,15 @@
 ---
 import { getLangFromUrl } from '@i18n/utils'
-import { ViewTransitions } from 'astro:transitions'
-import Navbar from '@modules/navbar/navbar.astro'
-import MobileMenu from '@modules/mobileMenu/mobileMenu.astro'
-import Contact from '@modules/contact/contact.astro'
-import Footer from '@modules/footer/footer.astro'
 import Favicon from '@assets/favicon.ico'
 import '@styles/variables.scss'
 import '@styles/main.scss'
 
 export interface Props {
   pageTitle: string
-  projectSlug?: string
-  translatedSlug?: string
-  description?: string
 }
 
 const lang = getLangFromUrl(Astro.url)
-const { pageTitle, translatedSlug, projectSlug, description }: Props =
-  Astro.props
+const { pageTitle }: Props = Astro.props
 ---
 
 <!doctype html>
@@ -28,8 +19,6 @@ const { pageTitle, translatedSlug, projectSlug, description }: Props =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{pageTitle}</title>
     <link rel="icon" href={Favicon} />
-    {description && <meta name="”description”" content={description} />}
-    <ViewTransitions />
     <meta
       name="google-site-verification"
       content="YHyMW4oTuJU2Ses4znH7xRe_yvk6_bRTRoHcb5pglr4"
@@ -62,20 +51,6 @@ const { pageTitle, translatedSlug, projectSlug, description }: Props =
 
       document.addEventListener('astro:after-swap', loadThemes)
     </script>
-    <Navbar
-      translatedProjectSlug={translatedSlug}
-      projectSlug={projectSlug}
-      transition:persist
-    />
-    <MobileMenu
-      translatedProjectSlug={translatedSlug}
-      projectSlug={projectSlug}
-      transition:persist
-    />
-    <main>
-      <slot />
-      <Contact />
-      <Footer />
-    </main>
+    <slot />
   </body>
 </html>

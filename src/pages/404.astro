@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets'
+import { getLangFromUrl, useTranslations } from '@i18n/utils'
+import Layout from '@layouts/error/error.astro'
+import Title from '@components/title/title.astro'
+import Button from '@components/button/button.astro'
+import Error from '@assets/error.png'
+import '@styles/error.scss'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<Layout pageTitle={t('404.pageName')}>
+  <main class="error">
+    <Image src={Error} alt="Error" />
+    <Title top={t('404.titleTop')} bottom={t('404.titleBottom')} />
+    <Button variant="solid" onclick="window.history.go(-1); return false;">
+      {t('404.back')}
+    </Button>
+  </main>
+</Layout>

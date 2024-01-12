@@ -46,6 +46,7 @@
   "projects.web": "Web",
   "projects.design": "Diseño",
   "projects.more": "Más",
+  "projects.noResults": "Parece que no hay coincidencias...",
 
   "project.titleTop": "Proyecto:",
   "project.tags": "Tags",
@@ -63,5 +64,10 @@
   "contact.cleanForm": "Limpiar",
   "contact.error.emptyField": "Por favor, complete este campo.",
   "contact.error.invalidEmail": "Mensaje envíado exitosamente🚀",
-  "contact.submit.error": "Ups! Hubo un error con el servidor. Intente más tarde o contácteme a través de redes sociales 😿"
+  "contact.submit.error": "Ups! Hubo un error con el servidor. Intente más tarde o contácteme a través de redes sociales 😿",
+
+  "404.pageName": "Error 404",
+  "404.titleTop": "Pagina No Encontrada",
+  "404.titleBottom": "Error 404",
+  "404.back": "Regresar"
 }

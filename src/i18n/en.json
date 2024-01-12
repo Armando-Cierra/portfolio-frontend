@@ -46,6 +46,7 @@
   "projects.web": "Web",
   "projects.design": "Design",
   "projects.more": "More",
+  "projects.noResults": "It seems there are no coincidences...",
 
   "project.titleTop": "Project:",
   "project.tags": "Tags",
@@ -64,5 +65,10 @@
   "contact.error.emptyField": "Please complete this field.",
   "contact.error.invalidEmail": "Please introduce a valid email format.",
   "contact.submit.success": "Message sent successfully 🚀",
-  "contact.submit.error": "Ups! There was an error with the server. Try again later or contact me on my social networks 😿"
+  "contact.submit.error": "Ups! There was an error with the server. Try again later or contact me on my social networks 😿",
+
+  "404.pageName": "Error 404",
+  "404.titleTop": "Page Not Found",
+  "404.titleBottom": "Error 404",
+  "404.back": "Go Back"
 }
