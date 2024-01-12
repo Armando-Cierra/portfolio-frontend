@@ -122,14 +122,10 @@ const projectsURL = pathname.replace(`/${slug}`, '')
 
 <script>
   import mediumZoom from 'medium-zoom/dist/pure'
-
-  function executeMediumZoom() {
+  document.addEventListener('astro:page-load', () => {
     mediumZoom('[data-zoomable]', {
       background: 'var(--background_0)',
       scrollOffset: 40
     })
-  }
-
-  executeMediumZoom()
-  document.addEventListener('astro:after-swap', executeMediumZoom)
+  })
 </script>

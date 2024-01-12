@@ -133,7 +133,7 @@ function getLanguageURL(lang: 'es' | 'en') {
 </button>
 
 <script>
-  function settingMobileMenu() {
+  document.addEventListener('astro:page-load', () => {
     const menuTrigger = document.getElementById(
       'menuTrigger'
     ) as HTMLButtonElement
@@ -150,6 +150,7 @@ function getLanguageURL(lang: 'es' | 'en') {
     menuTrigger.addEventListener('click', toggleMenu)
 
     function toggleMenu() {
+      console.log(menuState)
       if (menuState === 'close') {
         menuState = 'open'
         mobileMenu.classList.add('mobileMenu--open')
@@ -194,8 +195,5 @@ function getLanguageURL(lang: 'es' | 'en') {
         mobileLightModeOption.classList.add('mobileColorModeOption--active')
       }
     }
-  }
-  settingMobileMenu()
-
-  document.addEventListener('astro:after-swap', settingMobileMenu)
+  })
 </script>

@@ -91,7 +91,7 @@ function getLanguageURL(lang: 'es' | 'en') {
       <div class="languages">
         <a
           class:list={[
-            'link',
+            'link languageLink',
             {
               'link--active': lang === 'en',
               'link--disabled': lang === 'en'
@@ -102,7 +102,7 @@ function getLanguageURL(lang: 'es' | 'en') {
         <div class="decorator"></div>
         <a
           class:list={[
-            'link',
+            'link languageLink',
             {
               'link--active': lang === 'es',
               'link--disabled': lang === 'es'
@@ -111,82 +111,59 @@ function getLanguageURL(lang: 'es' | 'en') {
           href={getLanguageURL('es')}>ES</a
         >
       </div>
-      <div class="tooltipBox">
-        <Button
-          id="colorModeSelector"
-          customClass="colorModeSelector"
-          variant="ghost"
-          iconOnly
-        >
-          <Icon
-            name="moon"
-            id="sunIcon"
-            customClass="colorModeIcon icon--hidden"
-          />
-          <Icon
-            name="sun"
-            id="moonIcon"
-            customClass="colorModeIcon icon--hidden"
-          />
-        </Button>
-        <div class="tooltip tooltip--hidden" id="tooltip"></div>
-      </div>
+      <Button
+        id="darkModeButton"
+        customClass="colorModeSelector"
+        variant="ghost"
+        iconOnly
+      >
+        <Icon name="moon" />
+        <div class="tooltip">{t('navbar.darkMode')}</div>
+      </Button>
+      <Button
+        id="lightModeButton"
+        customClass="colorModeSelector"
+        variant="ghost"
+        iconOnly
+      >
+        <Icon name="sun" />
+        <div class="tooltip">{t('navbar.lightMode')}</div>
+      </Button>
     </div>
   </div>
 </nav>
 
-<script define:vars={{ colorModesTranslations }}>
-  function setThemeController() {
-    //Initial Tooltip value and icon
-    const initialTheme = localStorage.getItem('colorMode')
-    const colorModeBtn = document.getElementById('colorModeSelector')
-    const sunIcon = document.getElementById('sunIcon')
-    const moonIcon = document.getElementById('moonIcon')
-    const tooltip = document.getElementById('tooltip')
+<script define:vars={{ colorModesTranslations }} is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const darkModeButton = document.getElementById('darkModeButton')
+    const lightModeButton = document.getElementById('lightModeButton')
+    const currentTheme = localStorage.getItem('colorMode')
 
-    tooltip.innerHTML =
-      initialTheme === 'light'
-        ? colorModesTranslations.lightMode
-        : colorModesTranslations.darkMode
-
-    initialTheme === 'light'
-      ? moonIcon.classList.remove('icon--hidden')
-      : sunIcon.classList.remove('icon--hidden')
-
-    //Color mode toggler
-    colorModeBtn.addEventListener('click', toggleMenu)
-
-    function toggleMenu() {
-      const currentTheme = localStorage.getItem('colorMode')
-
-      if (currentTheme === 'light') {
-        localStorage.setItem('colorMode', 'dark')
-        document.body.setAttribute('data-colorMode', 'dark')
-        tooltip.innerHTML = colorModesTranslations.darkMode
-        sunIcon.classList.remove('icon--hidden')
-        moonIcon.classList.add('icon--hidden')
-      } else {
-        localStorage.setItem('colorMode', 'light')
-        document.body.setAttribute('data-colorMode', 'light')
-        tooltip.innerHTML = colorModesTranslations.lightMode
-        sunIcon.classList.add('icon--hidden')
-        moonIcon.classList.remove('icon--hidden')
-      }
+    if (currentTheme === 'dark') {
+      hideDarkButton()
+    } else {
+      hideLightButton()
     }
 
-    //Tooltip Functionality
-    colorModeBtn.addEventListener('mouseenter', showTooltip)
-    colorModeBtn.addEventListener('mouseleave', hideTooltip)
+    darkModeButton.addEventListener('click', () => {
+      hideDarkButton()
+      document.body.setAttribute('data-colormode', 'dark')
+      localStorage.setItem('colorMode', 'dark')
+    })
+    lightModeButton.addEventListener('click', () => {
+      hideLightButton()
+      document.body.setAttribute('data-colormode', 'light')
+      localStorage.setItem('colorMode', 'light')
+    })
 
-    function showTooltip() {
-      tooltip.classList.remove('tooltip--hidden')
+    function hideDarkButton() {
+      darkModeButton.classList.add('colorModeSelector--hidden')
+      lightModeButton.classList.remove('colorModeSelector--hidden')
     }
 
-    function hideTooltip() {
-      tooltip.classList.add('tooltip--hidden')
+    function hideLightButton() {
+      darkModeButton.classList.remove('colorModeSelector--hidden')
+      lightModeButton.classList.add('colorModeSelector--hidden')
     }
-  }
-
-  setThemeController()
-  document.addEventListener('astro:after-swap', setThemeController)
+  })
 </script>

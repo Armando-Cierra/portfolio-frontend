@@ -74,16 +74,18 @@
           transition: ease-in-out 0.15s;
         }
       }
-      .tooltipBox {
+      .colorModeSelector {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
-        .colorModeIcon {
-          color: var(--accent);
+        &:hover {
+          .tooltip {
+            opacity: 1;
+          }
         }
-        .icon--hidden {
-          display: none;
+        .icon {
+          color: var(--accent);
         }
         .tooltip {
           position: absolute;
@@ -96,7 +98,7 @@
           padding: 0.5rem;
           border-radius: 8px;
           white-space: nowrap;
-          opacity: 1;
+          opacity: 0;
           pointer-events: none;
           font-size: var(--small);
           color: var(--text);
@@ -115,9 +117,9 @@
             transition: ease-in-out 0.15s;
           }
         }
-        .tooltip--hidden {
-          opacity: 0;
-        }
+      }
+      .colorModeSelector--hidden {
+        display: none;
       }
     }
   }
