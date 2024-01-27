@@ -10,7 +10,7 @@
   "mobileMenu.Languages": "Idiomas",
   "mobileMenu.ColorMode": "Modos de Color",
 
-  "home.pageName": "Inicio",
+  "home.pageName": "Inicio - Bienvenidos a mi portafolio",
   "home.description": "Portafolio personal del desarrollador web y diseñador gráfico Armando Cierra.",
   "home.welcome.titleTop": "Hey! Bienvenido a Mi",
   "home.welcome.titleBottom": "Portafolio",
@@ -23,7 +23,7 @@
   "home.services.titleTop": "Lista De",
   "home.services.titleBottom": "Servicios",
 
-  "about.pageName": "Acerca De",
+  "about.pageName": "Acerca De Mi",
   "about.description": "Información básica, laboral y principales habilidades del desarrollador web y diseñador gráfico Armando Cierra.",
   "about.intro.titleTop": "Conoce Más",
   "about.intro.titleBottom": "Acerca De Mí",
@@ -31,7 +31,7 @@
   "about.intro.cvButton": "Descarga Mi CV",
   "about.workExperience.titleTop": "Experiencia",
   "about.workExperience.titleBottom": "Laboral",
-  "about.skills.web.titleTop": "Abilidades",
+  "about.skills.web.titleTop": "Habilidades",
   "about.skills.web.titleBottom": "Web",
   "about.skills.design.titleTop": "Apps De",
   "about.skills.design.titleBottom": "Diseño",

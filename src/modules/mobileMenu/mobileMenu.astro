@@ -58,8 +58,8 @@ function getLanguageURL(lang: 'es' | 'en') {
       class:list={[
         'mobileLink',
         {
-          'mobileLink--active': pathname === '',
-          'mobileLink--disabled': pathname === ''
+          'mobileLink--active': pathname === '/' || pathname === '/es/',
+          'mobileLink--disabled': pathname === '/' || pathname === '/es/'
         }
       ]}
       href={getRelativeLocaleUrl(lang, '')}>{t('navbar.home')}</a
@@ -68,8 +68,8 @@ function getLanguageURL(lang: 'es' | 'en') {
       class:list={[
         'mobileLink',
         {
-          'mobileLink--active': pathname === 'about',
-          'mobileLink--disabled': pathname === 'about'
+          'mobileLink--active': pathname.includes('about'),
+          'mobileLink--disabled': pathname.includes('about')
         }
       ]}
       href={getRelativeLocaleUrl(lang, 'about')}>{t('navbar.about')}</a
@@ -78,8 +78,8 @@ function getLanguageURL(lang: 'es' | 'en') {
       class:list={[
         'mobileLink',
         {
-          'mobileLink--active': pathname === 'projects',
-          'mobileLink--disabled': pathname === 'projects'
+          'mobileLink--active': pathname.includes('projects'),
+          'mobileLink--disabled': pathname.includes('projects')
         }
       ]}
       href={getRelativeLocaleUrl(lang, 'projects')}>{t('navbar.projects')}</a

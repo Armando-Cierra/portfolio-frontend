@@ -2,22 +2,47 @@
 import type { Props } from './types'
 import './title.scss'
 
-const { customClass, size = 'default', align='center', top, bottom, ...rest } = Astro.props
+const {
+  customClass,
+  size = 'default',
+  align = 'center',
+  top,
+  bottom,
+  mainTitle = false,
+  ...rest
+} = Astro.props
 ---
 
-<div
-  class:list={[
-    'title',
-    {
-      [`title--${size}`]: size,
-      [`title--${align}`]: align,
-      [`${customClass}`]: customClass
-    }
-  ]}
-  {...rest}
->
-  <h2>
-    <span class="top">{top}</span>
-    <span class="bottom">{bottom}</span>
-  </h2>
-</div>
+{
+  mainTitle ? (
+    <h1
+      class:list={[
+        'title',
+        {
+          [`title--${size}`]: size,
+          [`title--${align}`]: align,
+          [`${customClass}`]: customClass
+        }
+      ]}
+      {...rest}
+    >
+      <span class="top">{top}</span>
+      <span class="bottom">{bottom}</span>
+    </h1>
+  ) : (
+    <h2
+      class:list={[
+        'title',
+        {
+          [`title--${size}`]: size,
+          [`title--${align}`]: align,
+          [`${customClass}`]: customClass
+        }
+      ]}
+      {...rest}
+    >
+      <span class="top">{top}</span>
+      <span class="bottom">{bottom}</span>
+    </h2>
+  )
+}

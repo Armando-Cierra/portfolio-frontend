@@ -14,7 +14,7 @@ const t = useTranslations(lang)
 <Layout pageTitle={t('404.pageName')}>
   <main class="error">
     <Image src={Error} alt="Error" />
-    <Title top={t('404.titleTop')} bottom={t('404.titleBottom')} />
+    <Title top={t('404.titleTop')} bottom={t('404.titleBottom')} mainTitle />
     <Button variant="solid" onclick="window.history.go(-1); return false;">
       {t('404.back')}
     </Button>

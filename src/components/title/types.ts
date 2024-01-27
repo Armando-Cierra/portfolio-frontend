@@ -4,4 +4,5 @@ export interface Props extends astroHTML.JSX.HTMLAttributes {
   align?: 'left' | 'center' | 'right'
   top: string
   bottom: string
+  mainTitle?: boolean
 }
