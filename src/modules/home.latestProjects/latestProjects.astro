@@ -1,4 +1,5 @@
 ---
+import { getAbsoluteLocaleUrl, getRelativeLocaleUrl } from 'astro:i18n'
 import { getLangFromUrl, useTranslations } from '@i18n/utils'
 import Title from '@components/title/title.astro'
 import Button from '@components/button/button.astro'
@@ -27,9 +28,11 @@ const { projects } = Astro.props
   </div>
   <div class="container descriptionContainer">
     <p class="description">{t('home.latestProjects.description')}</p>
-    <Button>
-      {t('home.latestProjects.button')}
-      <Icon name="case" />
-    </Button>
+    <a href={getAbsoluteLocaleUrl(lang, 'projects')}>
+      <Button>
+        {t('home.latestProjects.button')}
+        <Icon name="case" />
+      </Button>
+    </a>
   </div>
 </section>
